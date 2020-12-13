@@ -46,7 +46,10 @@
 
             ==> 클릭된 a 태그의 href 속성값을 어떻게 얻을 수 있나?
                 var href = event.target.href;
-
+            ==> event.target에 class 속성 추가
+                   예씨) event.target.class = "presentation"; <== 이런식으로 하면 되는데 에러
+                   html의 class 속성을 javascript에서 사용하려면 어떻게?
+                   event.target.className = "presentation";
             ==> 클릭된 a 태그의 href 속성값에서 파일의 확장자를 어떻게 얻을 수 있나?
                 // href 의 마지막 3개 글자 추출하기 : substr()
                 var ext = href.substr(-3); // href.substr(href.lenght-3, 3);
@@ -56,18 +59,18 @@
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
         <ul class="icon-links">
-            <li><a href="presentation.ppt">Presentation slides</a></li>
-            <li><a href="video.mp4">Video of presentation</a></li>
-            <li><a href="notes.pdf">Notes for presentation</a></li>
-            <li><a href="icons.gif">GIF Icon sprite</a></li>
-            <li><a href="icons.png">PNG Icon sprite</a></li>
-            <li><a href="icons.jpg">PNG Icon sprite</a></li>
-            <li><a href="fuyyu.ppt">Presentation slides</a></li>
-            <li><a href="fyyuy.mp4">Video of presentation</a></li>
-            <li><a href="uydyuflk.pdf">Notes for presentation</a></li>
-            <li><a href="OIP.gif">GIF Icon sprite</a></li>
-            <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
-            <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="presentation.ppt">Presentation slides</a></li>
+            <li><a v-on:click="aClick" href="video.mp4">Video of presentation</a></li>
+            <li><a v-on:click="aClick" href="notes.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="aClick" href="icons.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="icons.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a v-on:click="aClick" href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a v-on:click="aClick" href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="aClick" href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="aClick" href="PFDY.jpg">PNG Icon sprite</a></li>
         </ul>
     </div>
     <hr>
@@ -77,5 +80,57 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+    
+        },
+        //template: ``,
+        methods: {
+            aClick: function(event) {
+                console.log(event.target);
+                var href = event.target.href;
+                var ext = href.substr(-3);
+
+                if(ext === "ppt") {
+                    event.target.className = "presentation";
+                }else if(ext === "mp4") {
+                    event.target.className = "video";
+                }else if(ext === "pdf") {
+                    event.target.className = "pdf";
+                }else{
+                    event.target.className = "image";
+                }
+                event.preventDefault()
+                event.stopPropagation()
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
+
