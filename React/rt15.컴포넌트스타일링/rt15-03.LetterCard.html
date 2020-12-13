@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LetterCard</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+    <style>
+        .letter {
+            padding: 10px;
+            margin: 10px;
+            color: #333333;
+            display: inline-block;
+            font-family: monospace;
+            font-size : 32px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <xmp>
+        컴포넌트에 CSS를 적용하는 방법을 학습한다.
+        컴포넌트에 인라인 스타일링을 사용한다.
+
+        작업 순서
+        1. LetterCard 컴포턴트 만들기. 
+            아래의 html 코드를 컴포넌트로 만들기
+            <div class="letter" style="background-color:#58B3FF;">A</div> 
+        2. LetterCard 컴포넌트에서는 background-color 값을 
+            부모에서 bgcolor 속성값을 넘기면 받아서 사용하도록 한다. 
+            예시) 
+            <LetterCard bgcolor={"#58B3FF"}><span>A</span></LetterCard>
+        3. 자식 태그를 넘겨 받는 방법은 this.props.children 을 사용한다.
+            slot을 받는 방법
+            예시)        
+            <LetterCard bgcolor={"#58B3FF"}>
+                <span>A</span>  <== this.props.children 을 사용하여 받을 수 있다.
+            </LetterCard>
+        4. 
+            {
+                padding: 10px;
+                margin: 10px;
+                color: #333333;
+                display: inline-block;
+                font-family: monospace;
+                font-size : 32px;
+                text-align: center;
+            }
+            +
+            {
+                background-color: black;
+            }
+            <div style={...this.style.style1, ...{backgrondColor: this.props.bgcolor} }>
+            </div>
+        4. ReactDOM 을 사용하여 화면에 붙인다.
+            예시)
+            ReactDOM.render(
+                <div> 
+                    <LetterCard bgcolor={"#58B3FF"}>
+                        A
+                    </LetterCard>
+                    <LetterCard bgcolor={"#FF605F"}><span>E</span></LetterCard>
+                    <LetterCard bgcolor={"#FFD52E"}><span>I</span></LetterCard>
+                    <LetterCard bgcolor={"#49DD8E"}><span>O</span></LetterCard>
+                    <LetterCard bgcolor={"#AE99FF"}><span>U</span></LetterCard>
+                </div> 
+                ,
+                document.getElementById("app")
+            );
+    </xmp>
+    <hr>
+
+    <h2>스타일로 만든 </h2>
+    <div class="App">
+        <div class="letter" style="background-color:#58B3FF;">A</div>
+        <div class="letter" style="background-color:#FF605F;">E</div>
+        <div class="letter" style="background-color:#FFD52E;">I</div>
+        <div class="letter" style="background-color:#49DD8E;">O</div>
+        <div class="letter" style="background-color:#AE99FF;">U</div>
+    </div>
+    <hr>
+
+    <h2>컴포넌트로 만든 </h2>
+    <div id="app">
+    </div>
+</body>
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->

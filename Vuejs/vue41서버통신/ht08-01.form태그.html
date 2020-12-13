@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--form 태그-->
+    <h2>네이버에서 "멕시코" get으로 검색 요청하기</h2>
+    https://search.naver.com/search.naver?query=멕시코
+    <form action="https://search.naver.com/search.naver" method="get">
+        <!-- <input type="text" name="query" id="">멕시코</input> -->
+        <input type="text" name="query" id="" value="멕시코">
+        <input type="text" name="name" id="">
+        <input type="submit" value="전송">
+    </form>
+    <hr />
+
+    <h2>다음에서 "멕시코" get으로 검색 요청하기</h2>
+    https://search.daum.net/search?q=멕시코
+    <form action="https://search.daum.net/search" method="get">
+        <input type="text" name="q" value="멕시코" id="">
+        <input type="submit" value="전송">
+    </form>
+    <hr />
+
+    <h2>구글에서 "멕시코"를 get으로 검색 요청하기</h2>
+    https://www.google.com/search?q=멕시코
+    <form action="https://www.google.com/search" method="GET">
+        <input type="text" name="q" value="멕시코">
+        <input type="submit" value="요청"">
+    </form>
+    <hr />
+
+    <h2>네이버에서 "멕시코"를 post로 검색 요청하기</h2>
+    https://search.naver.com/search.naver
+    <form action="https://search.naver.com/search.naver" method="post">
+        <input type="text" name="query" id="" value="멕시코">
+        <input type="submit" value="전송">
+    </form>
+    <hr />
+
+</body>
+</html>

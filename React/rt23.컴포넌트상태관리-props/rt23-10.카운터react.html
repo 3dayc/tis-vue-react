@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>react 번개 카운터</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <style>
+        h1,h2,h3,h4,h5,h6 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        컴포넌트 스타일을 상속하는 방법을 실습을 통해 배운다
+
+        번개 친 횟수를 기록하는, 그림과 같은 간단한 번개 카운터를 만들어 보자.
+        setlnterval 함수를 사용해 1,000ms(1 초)마다 한 번에 100만큼 값을 증가시키는 코드다.
+
+        componentDidMount: 이 메소드는 컴포넌트가 렌더링(또는 마운트)된 후에 실행 된다 .
+        setState: 이 메소드는 state 객체의 값을 갱신할 수 있게 해준다.
+    </xmp>
+
+    <div id="app">
+        <div style="width: 250px; background-color: black; padding: 0px; border-radius: 10px; text-align: center; margin: 0px; font-family: sans-serif; color: white;">
+            <h1 style="color: rgb(102, 255, 255); font-size: 50px;">2700</h1>
+            <h2 style="margin: 0px; padding: 0px; font-family: sans-serif; color: white;">번개</h2>
+            <h2 style="font-size: 38px; margin: 0px; padding: 0px; font-family: sans-serif; color: white;">강조</h2>
+            <p style="font-size: 17px; opacity: 0.5; margin: 0px; padding: 0px; font-family: sans-serif; color: white;">
+                since you loaded this example
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

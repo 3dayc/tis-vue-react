@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>동적 이벤트 설정</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        p {
+            background: yellow;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        span {
+            background: pink;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #app>div {
+            border: 1px dashed red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+        도전1.
+        동적으로 추가된 엘리먼트, p 와 span 태그에 click 이벤트를 설정하고
+        동적으로 추가된 p 와 span 엘리먼트를 click 하면
+        <p id="rhtml"> 에 click 한 태그를 출력하시오.
+
+            도전2.
+            p 태그를 클릭한 경우에만
+        <p id="rhtml"> 에 click 한 태그를 출력하도록 조건을 추가하시오.
+            span 태그에서 클릭한 경우에는 표시하지 않는다.
+            node의 태그이름을 어떻게 알 수 있을까?
+    </xmp>
+    <hr>
+    <div id="app">
+
+        <p v-on:click="clickPtag">
+            Click me! 클릭하면 id=ptag 에 추가하시오 <br>
+            추가된 p 엘리먼트에 click 이벤트 설정하려고 한다. 어떻게 하면 될까?
+        </p>
+        <div id="ptag" v-on:click="clickDynamic">
+            <p v-for="(pval, i) in ptags" v-bind:key="i">{{pval}}</p>
+        </div>
+        <hr>
+
+        <span v-on:click="clickStag">
+            Click me! 클릭하면 id=stag 에 추가하시오 <br>
+            추가된 span 엘리먼트에 click 이벤트 설정하려고 한다. 어떻게 하면 될까?
+        </span>
+        <div id="stag" v-on:click="clickDynamic">
+            <span v-for="(sval, i) in stags" v-bind:key="i">{{sval}}</span>
+        </div>
+        <hr>
+
+        <p id="rhtml" v-html="rhtml" style="background-color: white; border: 1px dashed blue;">
+            결과
+            <p> p paragraph </p>
+        </p>
+    </div>
+</body>
+
+</html>

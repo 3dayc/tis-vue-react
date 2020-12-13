@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+
+    <pre>
+
+      양방향 데이터 바인딩과  v-if, v-else-if, v-else 지시자의 사용법을 실습해 본다.
+
+      이 예제는 입력된 금액에 따라서 회원의 등급을 표시한다.
+
+      0 &lt;= 잔고 &lt; 200000 ==> 등급: Basic
+      200000 &lt;= 잔고 &lt; 500000 ==> 등급: Bronze
+      500000 &lt;= 잔고 &lt; 100000 ==> 등급: Silver
+      100000 &lt;= 잔고 ==> 등급: Gold
+    </pre>
+
+    <div id="account">
+        잔고 : <input type="text" v-model="balance" />
+        <br />
+        회원님의 등급 :
+        <span v-if="balance >=1000000">Gold</span>
+        <span v-else-if="balance >= 500000">Silver</span>
+        <span v-else-if="balance >= 200000">Bronze</span>
+        <span v-else>Basic</span>
+    </div>
+    <hr>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

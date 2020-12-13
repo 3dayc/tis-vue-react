@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <pre>
+    
+    https://www.kirupa.com/html5/javascript_events.htm
+    https://reactjs.org/docs/events.html
+    https://reactjs.org/docs/handling-events.html
+    </pre>
+
+    <h2>JavaScript의 이벤트란?</h2>
+    <ol>
+        <li>when ________ happen, do _______. </li>
+    </ol>
+
+    <h2>JavaScript의 이벤트 핸들러 설정: addEventListener()</h2>
+    <ol>
+        <li>인라인 방식 핸들러</li>
+        <li>
+            고전 방식 핸들러
+            <pre>
+            document.onClick = function(e){
+                document.body.style.backgroundColor = "#FFC926";
+            };
+            </pre>
+        </li>
+        <li>표준 방식 핸들러
+            <pre>
+            var changeColor = function(e){
+                document.body.style.backgroundColor = "#FFC926";
+            };
+            document.addEventListener('click', changeColor, true);
+            </pre>
+        </li>
+    </ol>
+
+    <h2>JavaScript의 이벤트 취소: return false</h2>
+    <ol>
+        <li>return false</li>
+        <li>event.stopPropagation()</li>
+        <li>event.preventDefault()</li>
+    </ol>
+
+    <h2>JavaScript의 이벤트 객체</h2>
+    <ol>
+        <li>AnimationEvent	For CSS animations</li>
+        <li>ClipboardEvent	For modification of the clipboard</li>
+        <li>DragEvent	For drag and drop interaction</li>
+        <li>FocusEvent	For focus-related events</li>
+        <li>HashChangeEvent	For changes in the anchor part of the URL</li>
+        <li>InputEvent	For user input</li>
+        <li>KeyboardEvent	For keyboard interaction</li>
+        <li>MouseEvent	For mouse interaction</li>
+        <li>PageTransitionEvent	For navigating to, and away from, web pages</li>
+        <li>PopStateEvent	For changes in the history entry</li>
+        <li>ProgressEvent	For the progress of loading external resources</li>
+        <li>StorageEvent	For changes in the window's storage area.</li>
+        <li>TouchEvent	For touch interaction</li>
+        <li>TransitionEvent	For CSS transitions</li>
+        <li>UiEvent	For user interface interaction</li>
+        <li>WheelEvent	For mousewheel interaction</li>
+    </ol>
+</body>
+
+</html>

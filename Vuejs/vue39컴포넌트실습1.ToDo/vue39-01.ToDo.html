@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <title>05-12</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+            background-color: #f6f6f8;
+        }
+
+        input {
+            border-style: groove;
+            width: 200px;
+        }
+
+        button {
+            border-style: groove;
+        }
+
+        .shadow {
+            box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        h1 {
+            color: #2f3b52;
+            font-weight: 900;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .inputBox {
+            background: white;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 5px;
+        }
+
+        .inputBox input {
+            border-style: none;
+            font-size: 0.9rem;
+        }
+
+        .addContainer {
+            float: right;
+            background: linear-gradient(to right, #6478fb, #8763fb);
+            display: inline-block;
+            width: 3rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .addBtn {
+            color: white;
+            vertical-align: middle;
+        }
+
+        .closeModalBtn {
+            color: #62acde;
+        }
+
+        .modal-mask {
+            position: fixed;
+            z-index: 9998;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: table;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-wrapper {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .modal-container {
+            width: 300px;
+            margin: 0px auto;
+            padding: 20px 30px;
+            background-color: #fff;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            transition: all 0.3s ease;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .modal-header h3 {
+            margin-top: 0;
+            color: #62acde;
+        }
+
+        .modal-body {
+            margin: 20px 0;
+        }
+
+        .modal-default-button {
+            float: right;
+        }
+
+        .modal-enter {
+            opacity: 0;
+        }
+
+        .modal-leave-active {
+            opacity: 0;
+        }
+
+        .modal-enter .modal-container,
+        .modal-leave-active .modal-container {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0px;
+            margin-top: 0;
+            text-align: left;
+        }
+
+        li {
+            display: flex;
+            min-height: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0.5rem 0;
+            padding: 0 0.9rem;
+            background: white;
+            border-radius: 5px;
+        }
+
+        li.checked {
+            background: #BBB;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        .checkBtn {
+            line-height: 45px;
+            color: #62acde;
+            margin-right: 5px;
+        }
+
+        .removeBtn {
+            margin-left: auto;
+            color: #de4343;
+        }
+
+        .list-enter-active,
+        .list-leave-active {
+            transition: all 1s;
+        }
+
+        .list-enter,
+        .list-leave-to {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .clearAllContainer {
+            width: 8.5rem;
+            height: 50px;
+            line-height: 50px;
+            background-color: white;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .clearAllBtn {
+            color: #e20303;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <pre style="text-align:left;">
+
+    선 학습 필요 사항:
+        array.reduce() 사용법
+        array.map() 사용법
+        array.filter() 사용법
+        array.findIndex() 사용법
+        array.splice() 사용법
+
+    todoItems 는 아래와 같다고 가정한다
+    todoItems = [
+        { id: 1, todo: "영화보기", done: false },
+        { id: 2, todo: "주말 산책", done: true },
+        { id: 3, todo: "ES6 학습", done: false },
+        { id: 4, todo: "잠실 야구장", done: false }
+    ]
+
+    기능 추가
+        1. add 할 때 this.$data.todoItems 가 빈 배열인 경우 기능 추가
+        2. add 후에 input 태그의 입력 값 지우기.
+        3. 토글 할 때 findIndex 로 못 찾는 경우에 대한 방어 코드 추가.
+        4. input 태그에 빈 문자일이 입력 되는 경우는 배열에 추가되지 않게.
+        5. todo 타이틀 바꾸기. 기능 누락. 추가 필요
+
+    주의 사항.
+        1. checked 메서드에서 class에 빈 문자열로 설정하면 안됨. null 로 설정하면 됨.
+
+    작업 순서
+        1. "vue29-01.ToDo.qs05-12.html"을 복사하여 붙여 넣고 작업한다.
+        2. "vue29-01.ToDo.qs05-12.html"을 컴포넌트로 만들어 본다.
+    </pre>
+    <hr>
+
+    <div id="app">
+
+        <!-- TodoHeader -->
+        <header>
+            <h1>TODO it!</h1>
+        </header>
+
+        <!-- TodoInput -->
+        <div class="inputBox shadow">
+            <input type="text"
+                placeholder="Type what you have to do"
+                v-model.trim:value="newTodoItem"
+                v-on:keyup.enter="addTodo" />
+            <span class="addContainer" v-on:click="addTodo">
+                <i class="addBtn fas fa-plus" aria-hidden="true"></i>
+            </span>
+
+            <div class="modal-mask" v-on:keyup.esc="$emit('close')" v-if="showModal" v-on:close="showModal = false">
+                <div class="modal-wrapper">
+                    <div class="modal-container">
+                        <div class="modal-header">
+                            <h3 slot="header">경고</h3>
+                        </div>
+
+                        <div class="modal-footer">
+                            <span slot="footer" v-on:click="showModal = false">
+                                할 일을 입력하세요.
+                                <i class="closeModalBtn fas fa-times" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TodoList -->
+        <section>
+            <transition-group name="list" tag="ul">
+                <li v-for="(todoItem, index) in todoItems"
+                    v-bind:key="todoItem.id"
+                    v-bind:class="checked(todoItem.done)"
+                    v-on:click="doneToggle(todoItem.id, index)">
+                    <i class="checkBtn fas fa-check" aria-hidden="true"></i>
+                    {{ todoItem.todo }}
+                    <span class="removeBtn"
+                          type="button"
+                          v-on:click="removeTodo(todoItem.id, index)">
+                        <i class="far fa-trash-alt" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </transition-group>
+        </section>
+
+        <!-- TodoFooter -->
+        <div class="clearAllContainer">
+            <span class="clearAllBtn" v-on:click="clearAll">Clear All</span>
+        </div>
+
+    </div>
+
+    
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+
+
+
+

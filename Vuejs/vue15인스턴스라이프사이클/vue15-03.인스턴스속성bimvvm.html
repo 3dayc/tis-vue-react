@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <pre>
+
+      Vue 인스턴스 속성은 e dt mc^2 life cycle 를 실습한다.
+
+      작업 내용
+        1. 페이지가 로딩되면 {{message}} 자리에 "change message at mounted!!!" 를 출력하시오.
+        2. 버튼을 클릭하면 {{message}} 자리에 "change message when a button clicked!!!" 를 출력하시오.
+        3. 페이지가 로딩 3초 후에 {{message}} 자리에 "change message after 3 seconds!!!" 를 출력하시오.
+        4. 페이지가 로딩 5초 후에 {{message}} 자리에 "change message after 5 seconds!!!" 를 출력하시오.
+
+    </pre>
+    <hr>
+    <div id="my">
+        <h2>{{message}}</h2>
+        <button v-on:click="doClick">message 값 바꾸려면 click</button>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    var vm = new Vue({
+        el: "#my",
+        data: {
+            message: "aaa",
+        },
+        methods: {
+            doClick: function (e) {
+                var timeCurrent = new Date().toLocaleString();
+
+                this.$data.message = "change message " + timeCurrent;
+            },
+        },
+        mounted: function (e) {
+            console.log("mounted");
+            // this.$data.message = "change message at mounted!!!";
+            this.$set(this.$data, "message", "change message at mounted!!!");
+            
+            
+            window.setTimeout(()=>{
+                // this.$data.message = "change message after 3 seconds!!!";
+                this.$set( this.$data, "message", "change message after 3 seconds!!!");
+            }, 3000); // 3000ms = 3s
+
+            const self = this;
+            window.setTimeout(function(){
+                // self.$data.message = "change message after 5 seconds!!!";
+                self.$set( self.$data, "message", "change message after 5 seconds!!!");
+            }, 5000); // 5000ms = 5s
+        },
+    });
+</script>

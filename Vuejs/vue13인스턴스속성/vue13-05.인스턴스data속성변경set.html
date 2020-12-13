@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        span {
+            font-size: 3em;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+
+        data 속성의 값을 변경하려면 재할당으로 처리해야 한다. 
+
+        data 속성 주의 사항
+            인스턴스나 컴포넌트의 data 속성의 값을 직접 바꾸면 화면에 rendering 이 되지 않는 문제 발생
+            즉, this.$data.arr[0]=100; 과 같이 바꾸면 값은 바뀌지만 화면에 rendering 되지 않는 문제 발생.
+
+        어떻게 data 속성의 값을 바꾸어야 하나?
+            data 속성의 값을 변경하려면 반드시 재할당으로 처리해야 한다.
+        
+        자바스크립트 타입
+            # value 타입에는 string, number, boolen, ...
+            # reference 타입에는 Object, Array, Function, ...
+        
+        new Vue({
+            el: "#",
+            data: {
+                msg1:  "aaa", /* string */
+                msg2: 123, /* number */
+                msg3: true, /* boolen */
+                msg4: [1,2,3] /* array */
+                msg5: { a:1, b: "2"}, /*I object */
+                msg6: [
+                    { a:11, b: "12"} ,
+                    { a:21, b: "22"} ,
+                    { a:31, b: "32"} ,
+                ]
+            }
+        })
+
+
+        value 타입인 경우의 해결방법
+            data: {
+                msg1:  "aaa", /* string */
+                msg2: 123, /* number */
+                msg3: true, /* boolen */
+            }
+            1. this.$set(this.$data, "msg1", "ccc");
+            2. Vue.set(this.$data,"msg1", "bbb");
+            3. this.$data["msg1"] = "ddd";
+            4. this.$data.msg1 = "ddd";
+
+        reference 타입인 경우의 해결방법
+            data: {
+                msg4: [1,2,3] /* array */
+                msg5: { a:1, b: "2"}, /*I object */
+                msg6: [
+                    { a:11, b: "12"} ,
+                    { a:21, b: "22"} ,
+                    { a:31, b: "32"} ,
+                ]
+            }
+            
+            1. this.$set(object, key, value) 방식.
+                this.$set() 은 Vue 인스턴스 의 인스턴스 메서드
+                this.$set(this.$data.msg4, 0, 300);
+
+            2. Vue.set(object, key, value) 방식 
+                Vue.set() 은 Vue prototype 의 static 메서드
+                Vue.set(this.$data.msg4, 0, 100);
+
+            3. spread 연산자 방식 ==> 배열을 새로 만든 뒤 할당. ES6 에서만 가능.
+                var arr_copy=[...this.$data.msg4, 70];
+
+            4. splice()함수를 사용하여 변경한다.
+                this.$data.msg4.splice(0,2,500);
+
+        실행 순서와 결과 예시
+            (1) [100, 2, 3, 4, 5]       <== 방법1을 적용
+            (2) [100, 300, 3, 4, 5]     <== 방법2을 적용
+            (3) [3, 4, 5]               <== 방법3을 적용
+            (4) [500, 3, 4, 5, 70]      <== 방법4을 적용
+
+    </xmp>
+    <hr>
+    <div id="app">
+        <span v-for="(val, i) in arr" v-bind:key="i"> {{val}} </span>
+        <br>
+        <button v-on:click="change1">방법1로 변경</button>
+        <button v-on:click="change2">방법2로 변경</button>
+        <button v-on:click="change3">방법3로 변경</button>
+        <button v-on:click="change4">방법4로 변경</button>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            arr:[1,2,3,4,5],
+        },
+        //template: ``,
+        methods: {
+            change1: function(event) {
+                //[100, 2, 3, 4, 5] <== 방법1을 적용
+                console.log( event.target ); //<button v-on:click="change1">방법1로 변경</button>
+
+                //this.$data.arr[0] = 100;
+                this.$set( this.$data.arr, 0, 100);// update
+                console.log(this.$data.arr);
+            },
+            change2: function(event){
+                //[100, 300, 3, 4, 5] <== 방법2을 적용
+                console.log(event.target); //<button v-on:click="change1">방법1로 변경</button>
+                
+                //this.$data.arr[1] = 300;
+                this.$set(this.$data.arr, 1, 300);// update
+                console.log(this.$data.arr); 
+                console.log( this.$data.arr[0] );  // read
+            },
+            change3: function(event){
+                //[3, 4, 5] <== 방법3을 적용
+                console.log(event.target); //<button v-on:click="change1">방법1로 변경</button>
+                
+                //splice(시작, )
+                this.$data.arr.splice(0, 2); // 0번 부터 2번 전까지 ==>0번과 1번을 삭제
+                
+                console.log(this.$data.arr); 
+            },
+            change4: function (event) {
+                //[500, 3, 4, 5, 70]      <== 방법4을 적용
+                console.log(event.target); //<button v-on:click="change1">방법1로 변경</button>
+
+                // spread 연산자
+                var arr =  [500, ...this.$data.arr, 70 ]; //[500, 3, 4, 5, 70 ] 
+                this.$set(this.$data, "arr", arr )
+            },
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
+

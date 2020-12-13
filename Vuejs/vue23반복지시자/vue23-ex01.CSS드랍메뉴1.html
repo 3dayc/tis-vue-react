@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>자식>자식>자식></title>
+    <style>
+        /* common  초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        div {
+            margin: 50px 50px 0 50px;
+        }
+        h2 {
+            margin: 20px 0 0 20px;
+        }
+
+
+        /*menu1*/
+        #menu1>li {
+            position: relative;
+            margin-bottom: 5px;
+            border: 1px solid red;
+            width: 100px;
+        }
+
+        #menu1>li:nth-child(1) {
+            margin-right: -1px;
+        }
+
+        #menu1>li>a {
+            display: block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid gray;
+        }
+
+        #menu1>li>a:hover {
+            background: #333;
+            color: #fff
+        }
+
+        #menu1>li>ul {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100px;
+        }
+
+        #menu1>li:hover>ul {
+            display: block
+        }
+
+        #menu1>li>ul>li {
+            margin-left: 10px;
+            display: block;
+            margin-bottom: -1px;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid gray;
+        }
+
+        #menu1>li>ul>li:hover {
+            background: #999;
+            color: #fff
+        }
+
+
+        /* menu2 */
+        #menu2>li {
+            float: left;
+            position: relative;
+        }
+
+        #menu2::after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+
+        #menu2>li:nth-child(n+1) {
+            margin-left: -1px;
+        }
+
+        /* 2번째 li 부터 왼쪽 으로 -1px 이동 */
+        #menu2>li>a {
+            display: block;
+            text-align: center;
+            border: 1px solid gray;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #menu2>li>a:hover {
+            background-color: #333333;
+            color: white;
+        }
+
+        #menu2>li>ul {
+            display: none;
+            position: absolute;
+        }
+
+        #menu2>li:hover>ul {
+            display: block;
+            box-shadow: 0 2px 6px rgba(5, 5, 5, 0.9);
+        }
+
+        #menu2>li>ul>li>a {
+            display: block;
+            text-align: center;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid gray;
+            border-top: 0px;
+        }
+
+        #menu2>li>ul>li>a:hover {
+            background-color: lightgrey;
+            color: white;
+        }
+
+        /* menu3 */
+        #menu3>li {
+            float: left;
+            position: relative;
+        }
+
+        #menu3::after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+
+        #menu3>li:nth-child(n+1) {
+            margin-left: -1px;
+        }
+
+        /* 2번째 li 부터 왼쪽 으로 -1px 이동 */
+        #menu3>li>a {
+            display: block;
+            text-align: center;
+            border: 1px solid gray;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+        }
+
+        #menu3>li>a:hover {
+            background-color: #333333;
+            color: white;
+        }
+
+        #menu3>li>ul {
+            display: none;
+            position: absolute;
+            width: 450px;
+            box-sizing: border-box;
+        }
+
+        #menu3>li:hover>ul {
+            display: block;
+        }
+
+        #menu3>li>ul>li {
+            float: left;
+            width: 150px;
+            box-sizing: border-box;
+        }
+
+        /* 2번째 li 부터 마지막 li 까지 위쪽으로 -1px, 왼쪽 으로 -1px 이동 */
+        #menu3>li>ul::after {
+            clear: both;
+            content: '';
+            display: block;
+        }
+
+        #menu3>li>ul>li:nth-child(n+1) {
+            margin-top: -1px;
+            margin-right: -1px;
+        }
+        #menu3>li:hover>ul {
+            box-shadow: 0 2px 6px rgba(5, 5, 5, 0.9);
+        }
+
+        #menu3>li>ul>li>a {
+            display: block;
+            text-align: center;
+            border: 1px solid gray;
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            /* border-top: 0px; */
+        }
+
+        #menu3>li>ul>li>a:hover {
+            background-color: lightgrey;
+            color: white;
+        }
+
+        hr { clear:both; }
+    </style>
+</head>
+
+<body>
+    <h2>CSS 로 구현된 드랍 메뉴</h2>
+    <div>
+        <ul id="menu1">
+            <li><a href="#">MENU1</a>
+                <ul>
+                    <li><a href="#">MENU1-1</a></li>
+                    <li><a href="#">MENU1-2</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">MENU2</a>
+                <ul>
+                    <li><a href="#">MENU2-1</a></li>
+                    <li><a href="#">MENU2-2</a></li>
+                    <li><a href="#">MENU2-3</a></li>
+                    <li><a href="#">MENU2-4</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">MENU3</a>
+                <ul>
+                    <li><a href="#">MENU3-1</a></li>
+                    <li><a href="#">MENU3-2</a></li>
+                    <li><a href="#">MENU3-3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <hr style="margin-top: 100px;">
+
+    <h2>v-for 를 사용하여 구현된 드랍 메뉴</h2>
+    <div id="app1">
+        <ul id="menu1">
+            <li><a href="#">MENU1</a>
+                <ul>
+                    <li><a href="#">MENU1-1</a></li>
+                    <li><a href="#">MENU1-2</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">MENU2</a>
+                <ul>
+                    <li><a href="#">MENU2-1</a></li>
+                    <li><a href="#">MENU2-2</a></li>
+                    <li><a href="#">MENU2-3</a></li>
+                    <li><a href="#">MENU2-4</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">MENU3</a>
+                <ul>
+                    <li><a href="#">MENU3-1</a></li>
+                    <li><a href="#">MENU3-2</a></li>
+                    <li><a href="#">MENU3-3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

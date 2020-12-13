@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Router Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+    <xmp>
+        Vue-CLI를 배우고 프로젝트를 만들어 라우팅을 적용하여 본다.
+
+        ##################################
+        # Vue-CLI 학습하기
+        ##################################
+
+        Vue-CLI 구성요소
+            CLI코어: @vue/cli
+            CLI서비스: @vue/cli-service
+                웹팩
+                웹팩개발서버
+            CLI플러그인: @vue/cli
+                router
+                vuex
+                @vue/cli-plugin-babel
+                @vue/cli-plugin-eslint
+                @vue/cli-plugin-unit-jest
+
+
+        Vue-CLI 플러그인 추가
+            vue add 플러그인명. 예시) vue add router
+            npm install --save 플러그인명. 예시) npm install --save vuex
+
+        Vue-CLI 의 버전
+            2.x : <== 교재
+            3.x :
+            4.x : <== 최신 버전
+
+        Vue-CLI 설치:
+            npm install -g @vue/cli  <== global 설치
+            npm install    @vue/cli  <== local 설치
+
+        Vue-CLI 버전 확인 :
+            vue -V      <== global 설치인경우
+            또는  
+            npx uve -V   <== local 로컬설치인경우
+
+
+        ##################################
+        # Vue-CLI 프로젝트 생성 및 설정 작업
+        ##################################
+            step 01. npm install -g @vue/cli     # Vue-CLI 전역 설치
+            step 02. vue -V                      # Vue-CLI 버전 확인
+            step 03. vue create  routerprj01     # Vue 프로젝트 생성. package.json 생성. 라이브러리 다운로드
+                Vue CLI v4.4.1
+                ? Please pick a preset: Manually select features
+                ? Check the features needed for your project: Babel, Linter, Vuex, Linter
+                ? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
+                ? Pick a linter / formatter config: Prettier
+                ? Pick additional lint features: Lint on save
+                ? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files
+                ? Save this as a preset for future projects? No
+
+            step 04. cd routerprj01              # 폴더 이동
+            step 07. npm run serve             # 프로젝트 실행
+        
+            step 05. vue add router              # Vue-Router 플러그인 추가
+            step 06. npm install vuex --save     # Veux 추가
+
+            step 08. package.json 수정   # 프로젝트 실행시 브라우저 오픈 설정
+                "scripts": {
+                    "serve": "vue-cli-service serve --open --port 4000", /* --open: 브라우저로 열기, --port 4000 : 포트 지정 */
+                    "build": "vue-cli-service build",
+                    "lint": "vue-cli-service lint"
+                },
+            step 09. npm run serve               # 프로젝트 실행
+            step 10. npm run lint                # 코드 표준화 검사
+            step 11. npm run build              # 웹팩 빌드. /dist/ 에 파일 만들어짐.
+
+
+        프로젝트 폴더 구조
+            ├─ dist                     # 빌드 결과물 폴더
+            ├─ node_modules             # npm 모듈(패키지) 저장 폴더
+            ├─ public                   # 배포 버전을 빌드할 때 사용하는 파일.
+            │   └─ index.html
+            │   └─ favion.ico
+            └─ src                      # 소스 코드 폴더
+            │   └─ assets               # 기타 자원
+            │   │   └─ logo.png
+            │   ├─ components           # 컴포넌트
+            │   ├─ router               # 라우터
+            │   ├─ views                # 라우터 페이지
+            │   ├─ App.vue
+            │   └─ main.js
+            ├─ babel.config.js
+            ├─ package.json
+            └─ README.md
+
+
+
+        ##################################
+        # 프로젝트 생성 후 로그인 및 회원가입 기능 추가 작업
+        # 1. componets에 user 폴더 추가
+        # 2. view 추가
+        # 3. router 수정
+        ##################################
+            setp 1. componets 에 추가
+                    ~/src/components/login/user/UserLogin.vue 생성 및 수정
+                    ~/src/components/login/user/UserRegister.vue 생성 및 수정
+            setp 2. views 에 추가
+                    cp ~/src/views/About.vue  ~/src/views/Signup.vue
+            setp 3. ~/src/router/index.js 수정
+                import UserLogin from "@/components/user/UserLogin.vue";
+
+                아래 코드 추가 
+                {
+                    path: "/signup",
+                    name: "Signup",
+                    // route level code-splitting
+                    // this generates a separate chunk (signup.[hash].js) for this route
+                    // which is lazy-loaded when the route is visited.
+                    component: () =>
+                        import(/* webpackChunkName: "signup" */ "../views/Signup.vue")
+                },
+                {
+                    path: "/login",
+                    name: "Login",
+                    component: UserLogin
+                }
+            step 4. App.vue 에 router-link 추가
+                <div id="app">
+                    <div>
+                        <router-link to="/login">Login</router-link>
+                    </div>
+                    <div id="nav">
+                        <router-link to="/">Home</router-link> | 
+                        <router-link to="/about">About</router-link> |
+                        <router-link to="/signup">Signup</router-link>
+                    </div>
+                    <router-view />
+                </div>
+
+
+        ##################################
+        # Vue-CLI 프로젝트 routerprj03 생성 재실습
+        ##################################
+    </xmp>
+
+</body>
+</html>

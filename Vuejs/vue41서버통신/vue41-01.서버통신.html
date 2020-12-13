@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+    동기 vs 비동기의 차이를 이해한다.
+        동기식 :
+        비동기식 :
+
+
+    비동기 통신 기법
+        1. ajax 기법
+        2. Promise 기법
+        3. async ~ await 기법
+
+
+    Vue의 서버 통신 라이브러리는 액시오스, axios 다
+        https://github.com/axios/axios
+
+        Promise 기법
+
+        불러오기 : axios.get(url[, config])
+        입력하기 : axios.post(url[, data[, config]])
+
+        axios({
+            url: '/api/data',      // 호출되는 서버 주소.
+            method: "get",         // request method: get, post, delete, put
+            params: null,            // 서버로 보내는 데이터. { data1:"test1", data2:"test2" }
+            timeout: 30000,        // 최대 대기 시간: 30초. 30초 이상이 되면 fail 부분이 실행됨.
+            responseType: "text",  // response로 데이터 형태: text, html, xml, json, jsonp, script
+        })
+        .then( (res) => { console.log(res.data); })
+        .catch( (error) => { console.log(error); })
+        ;
+
+    Progress bar with Vue and Axios
+    How To Add Loading Indicators to Your Vue.js Application
+
+    </pre>
+</body>
+</html>

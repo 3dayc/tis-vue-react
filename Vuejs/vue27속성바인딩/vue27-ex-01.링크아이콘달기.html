@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enhancing Links</title>
+    <style>
+        .icon-links a {
+            background: 0 50% no-repeat;
+            padding-left: 20px;
+        }
+
+        a.presentation {
+            background-image: url(../images/presentation.png);
+        }
+
+        a.video {
+            background-image: url(../images/video.png);
+        }
+
+        a.pdf {
+            background-image: url(../images/pdf.png);
+        }
+
+        a.image {
+            background-image: url(../images/image.png);
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        1. a 태그에 click 이벤트 핸들러 작성. 이벤트지시자(v-on:click) 를 추가
+            파일의 확장자가 ppt 이면 a.presentation 적용
+            파일의 확장자가 mp4 이면 a.video 적용
+            파일의 확장자가 pdf 이면 a.pdf 적용
+            파일의 확장자가 gif 이면 a.image 적용
+            파일의 확장자가 png 이면 a.image 적용
+            파일의 확장자가 jpg 이면 a.image 적용
+
+            ==> a 태그의 리다이렉트 이벤트 취소 기능 필요
+                event.preventDefault()
+                event.stopPropagation()
+
+            ==> 클릭된 a 태그의 href 속성값을 어떻게 얻을 수 있나?
+                var href = event.target.href;
+
+            ==> 클릭된 a 태그의 href 속성값에서 파일의 확장자를 어떻게 얻을 수 있나?
+                // href 의 마지막 3개 글자 추출하기 : substr()
+                var ext = href.substr(-3); // href.substr(href.lenght-3, 3);
+    </xmp>
+    <hr>
+    <div id="app">
+        <h1>Adding Icons to Links</h1>
+        <p>Here's a list of downloadable files:</p>
+        <ul class="icon-links">
+            <li><a href="presentation.ppt">Presentation slides</a></li>
+            <li><a href="video.mp4">Video of presentation</a></li>
+            <li><a href="notes.pdf">Notes for presentation</a></li>
+            <li><a href="icons.gif">GIF Icon sprite</a></li>
+            <li><a href="icons.png">PNG Icon sprite</a></li>
+            <li><a href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
+        </ul>
+    </div>
+    <hr>
+
+    
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+

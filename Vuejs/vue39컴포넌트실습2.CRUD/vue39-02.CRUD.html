@@ -1,0 +1,82 @@
+<!-- ex08_crud.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        .strong {
+            color: red;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+        }
+
+        #app>div {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        CRUD 방법을 학습한다.
+
+        Object Array 에서 최대값 구하는 방법은 구글 검색을 이용한다.
+        ==> 검색조건: javascript object array max
+        방법1. .map() 를 사용하는 방법
+        방법2. .reducer()
+    </pre>
+    <div id="app">
+        <!-- list 데이터를 table형태로 출력하고 power가 300이상인 사람은 글자색을 red로 bold스타일로 출력하세요. -->
+        <h1>Creat Read Update Delete</h1>
+        <div>
+            <label for="">Name : </label>
+            <input type="text" ref="myinput" v-model="user.name">
+        </div>
+        <div>
+            <label for="">Power : </label>
+            <input type="text" v-model="user.power">
+        </div>
+        <button v-on:click="insert">Add</button>
+        <hr>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>POWER</th>
+                <th>CRUD</th>
+            </tr>
+            <tr v-for="(man, index) in list" v-bind:key="man.id" v-bind:class="{strong:man.power>=300}">
+                <td>{{man.id}}</td>
+                <td>{{man.name}}</td>
+                <td>{{man.power}}</td>
+                <td>
+                    <button v-on:click="doUp(index)">Power Up</button>
+                    <button v-on:click="doDown(index)">Power Down</button>
+                    <button v-on:click="doEdit(index)">Edit</button>
+                    <button v-on:click="doDel(index)">Del</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+

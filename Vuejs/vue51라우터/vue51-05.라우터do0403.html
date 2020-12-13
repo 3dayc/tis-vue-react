@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Named Router Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+    <xmp>
+        Vue의 라우팅을 이해하자.
+
+        vue-router 는?
+            vue-router is the officially supported routing library for vue.js.
+
+        1. 서버 라우팅
+        2. 클라이언트 라우팅. SPA
+
+        <router-link to="/path">Link Text</router-link>
+            ==> Creates a link to the route that matches the path
+        <router-view></router-view>
+            ==> Outlet for the currently matched route. It's component will be rendered here.
+
+        Nested Router
+        NamedView Router
+        Dynamic Router
+
+        [참조]page 77~86
+    </xmp>
+    <hr>
+    <div id="app">
+        <router-view name="header"></router-view>
+        <router-view></router-view>
+        <router-view name="footer"></router-view>
+    </div>
+
+</body>
+</html>

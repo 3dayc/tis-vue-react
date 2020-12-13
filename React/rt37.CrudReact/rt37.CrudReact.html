@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mobile Project</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+
+    <div>
+        <a href="#" onClick="window.open('https://vuejstodo-aa185.firebaseapp.com/','Todo앱확인','width=800,height=700,toolbar=no,menubar=no,scrollbars=no,resizable=yes');return false;" rel="nofollow">TODO 애플리케이션 구현 확인 링크</a>
+    </div>
+
+    <xmp>
+        React CLI 을 사용하여 ToDo 어플리케이션을 만들어 본다.
+
+
+        1. 프로젝트 관련 작업
+            step 1. 프로젝트 생성
+                $ npx create-react-app crudreact  # 프로젝트명은 소문자로 만들어야 함.
+                $ ls                # crudreact 보이는지 확인
+                $ cd crudreact
+                $ ls                # package.json 보이는지 확인
+                $ npm run start     # package.json 보이면 서버 실행
+
+
+            step 2. 프로젝트 root에 .env 파일을 만들고 아래 코드를 추가 한다.
+                SKIP_PREFLIGHT_CHECK=true
+
+
+            step 3. install the Bootstrap 4
+                $ npm install bootstrap --save
+
+
+            step 4. install React router
+                $ npm install react-router-dom --save
+
+
+            step 5. install React redux
+                $ npm install react-redux --save
+                $ npm install redux-thunk --save
+                $ npm install --save-dev redux-devtools
+
+
+            step 6. Axios
+                $ npm install axios --save
+
+
+            step 7. npm run start               # 프로젝트 실행
+            step 8. npm run lint                # 코드 표준화 검사
+            step 9. npm run build               # 웹팩 빌드. /dist/ 에 파일 만들어짐.
+
+
+        2. 프로젝트 폴더 구조
+           프로젝트
+            ├─ dist                     # 빌드 결과물 폴더
+            ├─ node_modules             # npm 모듈(패키지) 저장 폴더
+            ├─ public                   # 배포 버전을 빌드할 때 사용하는 파일.
+            │   └─ index.html
+            │   └─ favion.ico
+            └─ src                      # 소스 코드 폴더
+            │   └─ assets               # 기타 자원
+            │   │   └─ logo.png
+            │   ├─ components           # 컴포넌트
+            │   │   └─ todo             # 폴더 생성
+            │   │   └─ login            # 폴더 생성
+            │   │   └─ crud             # 폴더 생성
+            │   ├─ views                # 라우터 페이지
+            │   ├─ router               # 라우터
+            │   ├─ App.js
+            │   └─ main.js
+            ├─ babel.config.js
+            ├─ package.json
+            └─ README.md
+
+
+        3. 프로젝트 초기 설정.
+            프로젝트의 폴더 구조
+            └─ public/index.html 에 설정
+
+            3-1. fontawesome 설정
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+
+            3-2. ubuntu 폰트 설정
+            <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+            3-3. bootstrap 설정
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+            3-4. index.html 에 reset.css 설정
+            <link rel="stylesheet" href="%PUBLIC_URL%/reset.css">
+
+            3-5. index.html 에 style 설정
+            <style>
+                .strong {color:red; font-weight:bold; font-size:1.2em;}
+                label { display: inline-block; width: 80px;}
+                #app > div { margin: 5px 0 ;}
+            </style>
+
+        4. 프로젝트 1차 구현
+            4-1. 컴포넌트 생성
+                $ mkdir ~/src/components
+                $ mkdir ~/src/components/crud
+                $ touch ~/src/components/crud/CrudApp.js
+                $ touch ~/src/components/crud/CrudInput.js
+                $ touch ~/src/components/crud/CrudList.js
+                $ touch ~/src/components/crud/CrudListItem.js
+                $ reset.css  ~/public/ 에 복사
+
+            4-2. 컴포넌트 구현
+                $ ~/src/components/crud/CrudApp.js 수정
+                    import React, { Component } from 'react';
+                    import CrudInput from './CrudInput';
+                    import CrudList from './CrudList';
+                    ...중략
+                    export default CrudApp;
+
+
+                $ ~/src/components/crud/CrudInput.js
+                    import React, { Component } from 'react';
+                    ...중략
+                    export default CrudInput;
+
+                $ ~/src/components/CrudList.js 수정
+                    import React, { Component } from 'react';
+                    import CrudListItem from './CrudListItem';
+                    ...중략
+                    export default CrudList;
+
+                $ ~/src/components/crud/CrudListItem.js
+                    import React, { Component } from 'react';
+                    ...중략
+                    export default CrudListItem;
+
+            4-3. 라우팅 설정
+                $ ~/src/index.js 수정
+                변경 전 : import App from '../src/App';
+                변경 후 : import App from '../src/components/crud/CrudApp';
+
+            4-4. 프로젝트 폴더 구조
+                ├─ dist                     # 빌드 결과물 폴더
+                ├─ node_modules             # npm 모듈(패키지) 저장 폴더
+                ├─ public                   # 배포 버전을 빌드할 때 사용하는 파일.
+                │   ├─ favion.ico
+                │   ├─ index.html
+                │   ├─ logo192.png
+                │   ├─ logo512.png
+                │   ├─ manifest.json
+                │   └─ robots.txt
+                │   └─ reset.css           #
+                ├─ src
+                │   └─ components           # 폴더 생성
+                │   │  └─ todo              # 폴더 생성
+                │   │  └─ login             # 폴더 생성
+                │   │  └─ crud              # 폴더 생성
+                │   │      ├─ CrudApp.js
+                │   │      ├─ TodoInput.js
+                │   │      ├─ CrudList.js
+                │   │      └─ CrudListItem.js
+                │   ├─ views                # 라우터 페이지
+                │   ├─ router               # 라우터
+                │   ├─ App.css
+                │   ├─ App.js
+                │   ├─ index.css
+                │   ├─ index.js
+                │   ├─ logo.svg
+                │   └─ serviceWorker.js
+                ├─ .enc
+                ├─ .gitignore
+                ├─ package.json
+                └─ README.md
+
+
+    </xmp>
+
+</body>
+</html>

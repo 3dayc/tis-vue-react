@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <style>
+        li { list-style: disc; }
+    </style>
+
+</head>
+
+<body>
+    <pre>
+    render() 메서드안에 JSX를 사용하여 디자인을 연습한다.
+
+    아래의 JSX를 React.createElement() 를 사용하는 방식으로 바꾸어 작성하시오.
+
+    <xmp>
+        ReactDOM.render(
+            <div id="wrap">
+                <h3>세종대왕</h3>
+                <ul>
+                    <li>이순신</li>
+                    <li>광개토</li>
+                    <li>왕건</li>
+                </ul>
+                <div className="sidebar">
+                    sidebar
+                </div>
+                <p color="blue" shadowSize={2}>
+                    Click Me
+                </p>
+            </div>
+            ,
+            document.getElementById("app")
+        );
+        -----------------------------------------------
+    </xmp>
+
+    JSX가 어떻게 JavaScript로 변환되는지 시험해보고 싶다면
+    온라인 babel 컴파일러를 사용하여 본다. <a href="https://babeljs.io/repl/#?presets=react&amp;code_lz=GYVwdgxgLglg9mABACwKYBt1wBQEpEDeAUIogE6pQhlIA8AJjAG4B8AEhlogO5xnr0AhLQD0jVgG4iAXyJA" target="_blank" rel="noreferrer">온라인 babel 컴파일러</a>
+    </pre>
+    <hr>
+
+    <div id="app">
+	</div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <style>
+        ul {
+            float: left;
+            margin: 10px 30px;
+        }
+
+        #id2 {
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+        }
+
+        span {
+            width: 70px;
+            height: 50px;
+            float: left;
+            background-color: red;
+            cursor: pointer;
+            margin: 5px
+        }
+
+        hr {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        글자를 클릭하면 href 에 있는 값을 "img2"영역 에 나오게 하시오
+
+        a click
+          1. a 태그의 href 값을 가져온다.
+          2. id="img2" 의 src 에 1번에서 얻은 href의 값을 넣는다.
+          3. a 태그의 redirect 기능을 취소하시오.
+    </xmp>
+    <div id="pictures">
+        <ul>
+            <li><a class="image3" href="../images/image3.jpg" v-on:click="imageclick"> 강아지 사진 </a></li>
+            <li><a class="image3" href="../images/image4.jpg" v-on:click="imageclick"> 고양이 사진 </a></li>
+        </ul>
+        <img id="img2" v-bind:src="img_image3"  />
+    </div>
+    <hr>
+
+    <xmp>
+        id="but1" 인 엘리먼트에 mouseover, mouseout, click 효과 넣기
+        id="img-swap"인 엘리멘트에 hover 효과 넣기
+
+        이미지 위에 마우스를 올리거나 내리면 src 에 있는 값을 "img" 태그에 나오게 하시오
+        이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
+        이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
+        이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
+    </xmp>
+    <div id="onoffimage">
+        <img v-bind:src="img_but1[0]" id="but1"     v-on:mouseover="imageover" v-on:mouseout="imageout" />
+        <img v-bind:src="img_swap[0]" id="img-swap" v-on:mouseover="imageover" v-on:mouseout="imageout" />
+    </div>
+    <hr>
+
+    <xmp>
+        span 엘리먼트에 mouseover, mouseout, mousedown, mouseup 효과 넣기
+
+        박스에 mouseover 시 background-color를 yellow로
+        박스에 mousedown 시 background-color를 blue로
+        박스에 mouseup   시 background-color를 pink로
+        박스에 mouseout  시 background-color를 red로
+    </xmp>
+    <div id="mousebox">
+        <span ></span>
+        <span ></span>
+        <span ></span>
+    </div>
+    <hr>
+
+    <xmp>
+        change 효과 컴포넌트 만들기
+    </xmp>
+    <div id="sel">
+        <select id="sel">
+            <option value="../images/strawberry.gif">딸기
+            <option value="../images/banana.gif">바나나
+            <option value="../images/apple.gif" selected>사과
+        </select>
+        <img id="img">
+    </div>
+    <hr>
+
+    <xmp>
+        id="ID" 엘리먼트에 focus, blur 효과 넣기
+
+        focus 할때 outline: 2px dotted red 설정
+        blur 할때 outline: none;
+        >>> input 태그에 테두리를 칠하는 경우에는 outline을 사용.
+    </xmp>
+    <div id="focusblur">
+        <input type="text" id="ID">
+        <label style="margin: 0 0 0 20px;">input 태그에 테두리를 칠하는 경우에는 outline을 사용.</label>
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /* 실습은 ES6을 지원하는 브라우저에서 테스트 */
+
+    const cities = ["서울", "대구", "부산"];
+    console.log(cities[0], cities[1], cities[2]);
+    console.log( ...cities );
+
+    const east = ["U", "K", "T"];
+    const west = ["N", "C", "G"];
+    
+    // east 와 west 합치기 ==> Array.concat();
+    const countries1 = west.concat( east ); // ["N", "C", "G", "U", "K", "T"]
+    console.log(countries1);
+
+    // east 와 west 합치기 ==> spread 연산자 ;
+    const countries2 = [ ...west, ...east ];
+    console.log(countries2);
+    
+</script>

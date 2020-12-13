@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <!-- vue 플러그인 임포트   -->
+
+
+</head>
+
+<body>
+    <xmp>
+        기본 디렉티브
+
+        [1] v-if 디렉티브 : v-if 는 조건에 부합하면 렌더링을 한다.
+            data속성값에 따라 렌더링 여부를 결정하는 기능.
+            v-if 는 html 자체가 존재하지 않을 수 있다.
+        [2] v-else-if 디렉티브 :
+        [3] v-else 디렉티브 :
+
+
+        [4] v-for 디렉티브
+
+
+        [5] v-show 디렉티브
+            v-show 는 일단 html을 렌더링 한 후에 display스타일 속성으로
+            화면에 보여줄지 여부를 결정한다.
+            v-show 는 html 반드시 존재하게 된다
+            jQuery: $().show() / $().hide()
+
+
+        [6] v-text 디렉티브 :
+            단방향 데이터 바인딩.
+            innerText 속성과 비슷.
+            태그 문자열이 화면에 나타남.
+            {{ }} 동일한 표현임.
+            jQuery: $().text()
+
+
+        [7] v-html 디렉티브 :
+            단방향 데이터 바인딩.
+            innerHTML속성과 비슷.
+            태그 문자열을 파싱하여 화면에 나타냄.
+            v-text 를 사용 권장.
+            xss 공격에 취약.
+            jQuery: $().html()
+
+
+        [8] v-on 디렉티브 :
+            이벤트가 발생했을 때 실행시킬 methods를 지정하는 지시자
+            v-on:click 디렉티브:클릭 이벤트 처리
+            ==> 이를 줄여 @click으로 코드를 변경해도 된다. v-on대신 @를 사용
+            jQuery: $().on(이벤트명, function(e){ ... })
+
+
+        [9] v-bind 디렉티브 :
+            html 속성 바인딩.
+            단방향 데이터 바인딩.
+            v-bind:id       ==> $().attr("id") / $().attr("id", id값)
+            v-bind:class    ==> $().addClass() / $().removeClass()
+            v-bind:style    ==> $().css()
+            v-bind:value    ==> $().val()
+            v-bind:src      ==> $().attr("src") / $().attr("src", src값)
+
+
+        [10] v-model 디렉티브 :
+            html 속성 바인딩.
+            양방향 데이터 바인딩.
+            입력 태그 3개에만 사용. input, select, textarea
+            v-model 속성은 v-bind와 v-on의 조합으로 동작합니다.
+            <input v-bind:value="inputText" v-on:input="updateInput">
+            HTML 입력 요소의 종류에 따라 `v-model` 속성이 각각 다음과 같이 구성됩니다.
+            (1) text input 태그이면 `value / input`
+            (2) checkbox input 태그이면 `checked / change`
+            (3) radio input 태그이면 `checked / change`
+            (4) select 태그이면 `value / change`
+            (5) textarea 태그이면 `value / input`
+
+
+        [참조]page 103, 104, 105
+
+
+        https://joshua1988.github.io/web-development/vuejs/v-model-usage/
+    </xmp>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <pre>
+
+        Vue 인스턴스 속성을 학습한다.
+        Vue 인스턴스 속성은 e dt mc^2 life cycel 이다.
+
+        data 속성은?
+            Object.defineProperty()
+            인스턴스가 생성될 때 data 에 정의된 속성들은 모두 getter, setter 변환 작업을 거친다.
+
+            Vue의 data 속성값이 변화할 때 자동으로 화면을 다시 그리게 되는데
+            인스턴스와 data 속성 사이에 watcher 프록시를 두어 처리한다.
+            data 속성의 변화가 감지되면 watcher 에서 화면을 다시 그리라는 신호를 보냄.
+
+            data 속성은 Vue 인스턴스가 관찰하는 View-Model에서 Model을 의미하며 변경 사항은 즉시 반영된다.
+            data 속성은 data 속성에 주어진 모든 속성들은 Vue 인스턴스 내부에서 직접 이용되지 않고 watcher 프록시를 두어 처리한다.
+
+        data 속성 직접 접근 방법
+            실행 후 크롬 개발자 도구 콘솔에서 테스트해보면
+            인스턴스명.name
+            인스턴스명.$data.name 같이 접근할 수 있다.
+            # 인스턴스 속성에 $식별자를 앞에 붙이고 있는데 이는 이름 충돌을 피하기 위해서다.
+
+        data 속성 주의 사항
+        data 속성의 값을 직접 바꾸면 안된다.
+            인스턴스, 또는 컴포는트의 data 속성 값을 직접 바꾸면 화면 rendering 이 되지 않음
+            즉, this.arr[0]=100; 과 같이 바꾸면 화면의 rendering 되지 않는 문제가 발생함.
+            배열[i]="값" 형식으로 변경하면 rendering 되지 않음
+
+            해결방법
+                (1)Vue.set(object, key, value)를 이용해서 변경한다.
+                (2)this.$set(object, key, value)
+                (3)splice()함수를 사용하여 변경
+                (4)배열 사본을 만들어 수정한 뒤 재할당=>ES6 (spread 연산자)
+
+        [참조]page 40~42, 108~111
+        <hr>
+    </pre>
+    <div>
+        <table>
+            <colgroup>
+                <col width="150px">
+                <col width="*">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>속성</th>
+                    <th>설명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>el 속성</td>
+                    <td>
+                        element의 약자<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>data 속성</td>
+                    <td>반응형 속성이다. 값이 바뀌면 자동으로 화면에 변경 사항이 반영된다. ==> 뷰 반응성</td>
+                </tr>
+                <tr>
+                    <td>template 속성</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>methods 속성</td>
+                    <td>
+                        이벤트나 화면 동작을 정의하는 영역. <br>
+                        수동 수행 ==> 호출할 때마다 로직이 수행. 사용자 행위시. 버튼 클릭<br>
+                        <br>
+                        &#187; 페이지 109 참고<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>computed 속성</td>
+                    <td>
+                        data 속성의 데이터 연산을 정의하는 영역<br>
+                        자동 수행 ==> data 속성 값이 변경될 때 로직이 수행<br>
+                        <br>
+                        첫번째. data 속성 값의 변화에 따라 자동으로 수행.<br>
+                        두번째. 캐싱. 연산의 결과 값을 미리 저장하고 있다가 필요할 때 불러옴.<br>
+                        <br>
+                        &#187; 페이지 109 참고<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>components 속성</td>
+                    <td>
+                        지역 컴포넌트를 지정할 때 사용.
+                    </td>
+                </tr>
+                <tr>
+                    <td>watch 속성</td>
+                    <td>data 속성의 변경 여부를 추척한다</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

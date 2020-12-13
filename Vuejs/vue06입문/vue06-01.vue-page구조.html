@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 페이지 기본 구조</title>
+</head>
+
+<body>
+    <xmp>
+        ----------------------------------------
+        작업 순서
+        ----------------------------------------
+        1단계: 스크립트 플러그인 임포트
+        2단계: HTML 파일에 DOM 컨테이너 추가
+        3단계: Vue 인스턴스 생성
+        ----------------------------------------
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- CSS import -->
+        <link rel="stylesheet" href="../css/reset.css">
+
+
+        1단계: 스크립트 플러그인 임포트
+        <!-- vue 플러그인 임포트 -->
+        < script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+
+        < script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+        < script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+        < script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+
+        < script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> /* Popper library */</script>
+        < script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> /* bootstrap library */</script>
+
+
+        2단계: Vue 인스턴스 생성
+        new Vue({
+            el: "#",
+            data: {
+
+            },
+            template : {
+
+            },
+            methods: {
+
+            },
+            components : {
+
+            },
+            computed: {
+
+            },
+            watch : {
+
+            },
+            beforeCreate() {
+
+            },
+            created() {
+
+            },
+            beforeMount() {
+
+            },
+            mounted() {
+
+            },
+            beforeUpdate() {
+
+            },
+            updated() {
+
+            },
+            beforeDestroy() {
+
+            },
+            destroyed() {
+
+            },
+        });
+
+        3단계: HTML 파일에 DOM 컨테이너 설치
+        <div id="wrap">
+        </div>
+
+    </xmp>
+
+</body>
+
+</html>

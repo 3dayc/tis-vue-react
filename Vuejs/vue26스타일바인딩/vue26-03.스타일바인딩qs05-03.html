@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        div.button {
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+        javascript에서 style 프로퍼티 설정 방식과 설정시의 주의 사항을 학습한다.
+          1. 명칭은 카멜 표기법 사용. 왜냐하면 자바스립트이기 때문.
+            예시) 케밥 표기법 ==> 카멜 표기법
+            font-size ==> fontSize
+            backgroundColor ==> backgroundColor
+
+          2. 구분자는 세미콜론 대신 콤마 사용. 왜냐하면 자바스크립트 객체기이기 때문.
+            {
+                background-color: yellow;
+                font-size :  12pt;
+            }
+            ==>
+            {
+                backgroundColor: "yellow",
+                fontSize :  "12pt",
+            }
+
+        도전1. Vue.js 를 사용하여 "==>"를 클릭하면 TO-BE 박스에 아래의
+               style 속성을 적용하여 AS-IS 처럼 만드시오.
+          height: 50px;
+          width: 150px;
+          border: 1px solid black;
+          text-align: center;
+          line-height: 50px;
+          font-weight: 800;
+          color: red;
+          background-color: darkgoldenrod;
+          padding: 50px;
+    </xmp>
+    <style>
+        #example3>* {
+            float: left;
+            margin: 10px 50px 10px 0px;
+            line-height: 100px;
+        }
+
+        #example3asis {
+            height: 50px;
+            width: 150px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 800;
+            color: red;
+            background-color: darkgoldenrod;
+            padding: 50px;
+        }
+
+        #example3tobe {
+            border: 1px dashed blue;
+            width: 150px;
+        }
+    </style>
+    <div id="example3">
+
+        <span id="example3asis">
+            AS-IS
+        </span>
+        <button v-on:click="clickArrow">
+            ==>
+        </button>
+        <div id="example3tobe" v-bind:style="style1">
+            TO-BE
+        </div>
+    </div>
+    <hr style="clear:both;">
+    <xmp>
+        도전2: mouseover 와 mouseout 이벤트를 사용하는 것을 복습한다.
+        버튼 위로 mouseover 되면 배경색은 purple 로 글자색은 yellow 로 바꾸도록 style 을 설정하시오.
+        버튼 위에서 mouseout 되면 배경색을 aqua 로 글자색은 black 으로 바꾸도록 style 을 설정하시오.
+
+        https://javascript.info/mousemove-mouseover-mouseout-mouseenter-mouseleave
+    </xmp>
+    <style>
+        div>#eljvs,
+        div>#elvue {
+
+            float: left;
+            margin: 10px 50px 50px 0px;
+            line-height: 100px;
+        }
+    </style>
+    <div>
+        <div id="eljvs">
+            자바스크립로 style 적용<br>
+            <div id="a"
+                 style=" width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;"
+                 onmouseover="overEvent(this)"
+                 onmouseout="outEvent(this)">
+                테스트
+            </div>
+        </div>
+
+        <div id="elvue">
+            Vue.js 로 style 적용<br>
+            <div id="c"
+                 style="font-size: 12px;"
+                 v-bind:style="style1"
+                 v-on:mouseover="overEvent(this)"
+                 v-on:mouseout="outEvent(this)">
+                테스트
+            </div>
+        </div>
+    </div>
+    <hr style="clear:both;">
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

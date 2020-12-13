@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+  <table>
+    <colgroup>
+        <col />
+        <col />
+        <col />
+    </colgroup>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>프로젝트 초기화</td>
+            <td>npm init</td>
+            <td>yarn init</td>
+        </tr>
+        <tr>
+            <td>프로로젝트 운영 패키지 추가</td>
+            <td>npm install --save 패키지명</td>
+            <td>yarn add 패키지명</td>
+        </tr>
+        <tr>
+            <td>프로로젝트 개발 패키지 추가</td>
+            <td>npm install --save-dev 패키지명</td>
+            <td>yarn add --save-dev 패키지명</td>
+        </tr>
+        <tr>
+            <td>전역 패키지 추가</td>
+            <td>npm install --global 패키지명</td>
+            <td>yarn add global 패키지명</td>
+        </tr>
+        <tr>
+            <td>패키지 업데이트</td>
+            <td>npm update --save</td>
+            <td>yarn upgrade</td>
+        </tr>
+        <tr>
+            <td>패키지 삭제</td>
+            <td>npm uninstall 패키지명</td>
+            <td>yarn remove 패키지명</td>
+        </tr>
+        <tr>
+            <td>캐시 삭제</td>
+            <td>npm cache clean</td>
+            <td>yarn cache clean</td>
+        </tr>
+        <tr>
+            <td>package.json의 명령 스크립트 실행</td>
+            <td>npm run 스크립트명</td>
+            <td>yarn 스크립트명</td>
+        </tr>
+    </tbody>
+</table>
+    <xmp>
+
+    $ node -v
+    v12.18.1
+
+    $ mkdir es2015test
+
+    $ pwd
+    /d/workspace/Lecture/JavaScript/JavaScriptSource/st51.React/rt03.ES6문법
+
+    $ cd es2015test
+
+    $ pwd
+    /d/workspace/Lecture/JavaScript/JavaScriptSource/st51.React/rt03.ES6문법/es2015test
+
+    $ npm init
+    This utility will walk you through creating a package.json file.
+    It only covers the most common items, and tries to guess sensible defaults.
+
+    See `npm help json` for definitive documentation on these fields
+    and exactly what they do.
+
+    Use `npm install <pkg>` afterwards to install a package and
+    save it as a dependency in the package.json file.
+
+    Press ^C at any time to quit.
+    package name: (es2015test)
+    version: (1.0.0)
+    description:
+    entry point: (index.js)
+    test command:
+    git repository:
+    keywords:
+    author:
+    license: (ISC)
+    About to write to D:\workspace\Lecture\JavaScript\JavaScriptSource\st51.React\rt03.ES6문법\es2015test\package.json:
+
+    {
+    "name": "es2015test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+    }
+
+
+    Is this OK? (yes) yes
+
+    $ ls
+    package.json
+
+    $ cat package.json
+    {
+      "name": "es2015test",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "author": "",
+      "license": "ISC"
+    }
+
+    $ npm install --save-dev babel-cli babel-preset-env babel-preset-stage-2
+    npm WARN deprecated chokidar@1.7.0: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+
+    ... 중략
+
+    + babel-cli@6.26.0
+    + babel-preset-stage-3@6.24.1
+    + babel-preset-env@1.7.0
+    added 294 packages from 133 contributors and audited 295 packages in 33.441s
+
+    2 packages are looking for funding
+      run `npm fund` for details
+
+    found 1 low severity vulnerability
+      run `npm audit fix` to fix them, or `npm audit` for details
+
+    $ cat package.json
+      {
+        "name": "es2015test",
+        "version": "1.0.0",
+        "description": "",
+        "main": "index.js",
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "author": "",
+        "license": "ISC",
+        "devDependencies": {
+          "babel-cli": "^6.26.0",
+          "babel-preset-env": "^1.7.0",
+          "babel-preset-stage-3": "^6.24.1"
+        }
+      }
+
+
+    $ touch .babelrc
+
+    $ ls -a
+    .  ..  .babelrc  node_modules  package.json  package-lock.json
+
+    $ .babelrc 열고 아래 내용 추가
+    {
+        "presets": ["env", "stage-3"]
+    }
+
+    $ mkdir src    # es2015test 폴더에 src 폴더 생성
+
+    $ ls -a
+    .  ..  .babelrc  node_modules  package.json  package-lock.json  src
+
+    $ es2015test/src 에 07-02.js 파일 생성 후 코드 추가
+    let name = "world";
+    console.log( `Hello ${name}` );
+
+
+    $ 폴더 구조 및 파일 확인
+    \ES2015TEST
+    |   .babelrc
+    |   package-lock.json
+    |   package.json
+    \---node_modules
+    \---src
+            07-02.js
+
+
+    소스 파일 확인
+    $ cat src/07-02.js
+    let name = "world";
+    console.log( `Hello ${name}` );
+
+
+    $ 트랜스컴파일 수행 ==> src 폴더에 있는 js 파일을 es5로 컴파일하여 build 폴더에 추가하시오.
+    $ npx babel src/ -d build/
+    src\07-02.js -> build\07-02.js
+
+    트랜스컴파일 확인
+    $ cat build/07-02.js
+    "use strict";
+
+    var name = "world";
+    console.log("Hello " + name);
+
+
+    $ packages.json 에 build scripts 추가
+      "scripts": {
+          "build": "npx babel src/ -d build/"
+      }
+
+
+    $ cat packages.json
+      {
+        "name": "es2015test",
+        "version": "1.0.0",
+        "description": "",
+        "main": "index.js",
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "build": "npx babel src/ -d build/" /*  추가 */
+        },
+        "author": "",
+        "license": "ISC",
+        "devDependencies": {
+          "babel-cli": "^6.26.0",
+          "babel-preset-env": "^1.7.0",
+          "babel-preset-stage-3": "^6.24.1"
+        }
+      }
+
+
+    $ npm run build
+    </xmp>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Directives</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style lang="">
+        ul {
+            list-style-type: disc;
+        }
+
+        span {
+            font-size: 3em;
+            border: 1px dashed blue;
+            padding: 10px 20px;
+            margin: 5px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+        Javascritp for 대해서 학습한다.
+
+        Object Arrary를 바인딩하는 방법 학습.
+        Object Arrary 예시)
+        var objarray = [
+            { text: 'One', value: 'A' },
+            { text: 'Two', value: 'B' },
+            { text: 'Three', value: 'C' }
+        ];
+
+        1. objarray 에 { text: 'Four', value: 'D' } 를
+        추가하시오.
+        ==> create
+        2. objarray 에서 { text: 'Two', value: 'B' } 를
+        { text: '2', value: '2' } 로 바꾸시오.
+        ==> update
+        3. objarray 에서 { text: 'Three', value: 'C' } 를
+        삭제하시오.
+        ==> delete
+        4. objarray 에서 text가 'One' 객체들을 찾으시오
+        ==> search
+
+    </xmp>
+</body>
+
+</html>
+
+<script>
+    var objarray = [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+    ];
+
+    //1. objarray 에 { text: 'Four', value: 'D' } 를 추가하시오. ==> create
+    objarray[objarray.length] = { text: 'Four', value: 'D' };
+    objarray.push({ text: 'Four', value: 'D' });
+
+    //2. objarray 에서 { text: 'Two', value: 'B' } 를 { text: '2', value: '2' } 로 바꾸시오. ==> update
+    objarray[1] = { text: '2', value: '2' }
+
+    objarray[1].text = '2';
+    objarray[1].value = '2';
+
+    //3. objarray 에서 { text: 'Three', value: 'C' } 를 삭제하시오. ==> delete
+    objarray.splice(2,1)
+    
+    //4. objarray 에서 text가 'One' 객체들을 찾으시오 ==> search
+    var arrOne = [];
+    for( var i=0; i< objarray.length; i++){
+        var obj = objarray[i];
+        if( obj.text === 'One') {
+            // text가 'One' 이 있는 객체들을 담을 배열에 추가 
+            arrOne[arrOne.length] = obj;
+        }
+        else {
+            // 패스.
+        }
+    }
+    console.log("arrOne", arrOne)// [{ text: 'One', value: 'A' }]
+
+    var arrOne2 = objarray.filter(function(item, index){        
+        if (item.text === 'One') {
+            return true
+        }
+        else {
+            return false
+        }
+    })
+    console.log("arrOne2", arrOne2 )// [{ text: 'One', value: 'A' }]
+    
+    
+    for(index in objarray) {
+        debugger;
+        var option = objarray[index];
+        console.log("text:>> " + option.text, "value:>>" + option.value);
+
+        console.log("text:>> " + option["text"], "value:>>" + option["value"]);
+    }
+
+    for(option of objarray) {
+        debugger;
+
+        console.log("text:>> " + option.text, "value:>>" + option.value);
+        console.log("text:>> " + option["text"], "value:>>" + option["value"]);
+    }
+
+    // map 함수를 사용하여 프로퍼티 추가
+    var newopt = objarray.map(function (obj, index) {
+        obj["no"] = index;
+        return obj;
+    });
+    console.log(newopt);  // [  { text:"", value:"", no:"" },  { text:"", value:"", no:"" },  { text:"", value:"", no:"" } ]
+
+</script>

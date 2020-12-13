@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Data Binding</title>
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .container {
+            color: red;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+
+        v-model 디렉티브에 대해서 알아본다.
+
+        v-model 디렉티브는
+        양방향 데이터 바인딩이 필요한 경우에만 사용.
+        아래 5개의 경우에만 사용한다.
+        <input type="text" value="">
+        <input type="radio" checked>
+        <input type="checkbox" checked>
+        <select></select>
+        <textarea></textarea>
+
+
+        사용 예시)
+        속성 없이 v-model만도 사용 가능하다.
+        v-model:checked
+        v-model:value
+        v-model:selected
+
+        [참조]page
+    </xmp>
+    <hr>
+    <h2>v-model 연습</h2>
+    <div id="app3">
+        <div>
+            <input id="name" type="text" v-model:value="name" />
+            <span style="font-size:1.2em; font-weight:bold; border: 1px dashed blue;padding: 0 20px;">
+                Message : {{ name }}
+            </span>
+        </div>
+        <hr>
+
+        <div>
+            <p style="white-space: pre-line;"><span>Multiline message is:</span> {{ message }}</p>
+            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        </div>
+        <hr>
+
+        <div>
+            <input type="checkbox" id="checkbox" v-model:checked="checked">
+            <label for="checkbox">{{ checked }}</label>
+        </div>
+        <hr>
+
+        <div id='example-3'>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+        <hr>
+
+        <div>
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+        </div>
+        <hr>
+
+        <div>
+            <select v-model:selected="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <br>
+
+        <div>
+            <h3>options with v-for</h3>
+            <select v-model="selected">
+                <option v-for="(option,i) in options" v-bind:value="option.value">
+                    {{i}} : {{ option.text }}
+                </option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 바인딩</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        p {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        html 태그 = 엘리먼트 + 텍스트 + 어트리뷰트(속성)
+
+        데이터 바인딩이란?
+            데이터를 html 태그(엘리먼트, 텍스트)로 변환해주는 기법이다.
+
+        데이터 바인딩 지시자:
+            [1] {{ }} 콧수염 표현식을 사용한 데이터 바인딩.
+                콧수염 표현식안에서 자바스크립트 사용 가능
+                HTML이 아닌 일반 텍스트로 데이터를 해석합니다.
+                콧수염 표현식은 HTML 속성에는 사용할 수 없습니다. ==>  v-bind 지시자를 사용
+
+            [2] v-text 지시자를 사용한 데이터 바인딩.
+                단방향 데이터 바인딩.
+                innerText 속성과 비슷.
+                태그 문자열이 화면에 나타남.
+                {{ }} 동일한 표현임.
+                html 태그 제거됨.
+
+            [3] v-html 지시자를 사용한 데이터 바인딩.
+                단방향 데이터 바인딩.
+                innerHTML 속성과 비슷.
+                태그 문자열을 파싱하여 화면에 나타냄.
+                html 태그 유지됨.
+                HTML을 출력하려면 v-html 지시자를 사용해야 합니다.
+                v-text 를 사용 권장.
+                xss 공격에 취약.
+
+        데이터 바인딩 3가지 방법을 학습한다.
+           1. 콧수염 표현식 데이터 바인딩
+           2. v-html 데이터 바인딩
+           3. v-text 데이터 바인딩
+
+        문제. message 부분에 <i>첫번째 Vue.js 앱 입니다!</i>  가 나오게 하시오
+
+        참고. page 102
+    </xmp>
+    <hr>
+
+    <div id="my">
+        <div>
+            콧수염 표현식 데이터 바인딩: <p>{{message}}</p>
+        </div>
+        <div>
+            v-html 데이터 바인딩: <p style="color:red;" v-html="message"> </p>
+        </div>
+        <div>
+            v-text 데이터 바인딩: <p style="color:blue;" v-text="message"> </p>
+        </div>
+    </div>
+    <hr>
+
+    <h2>v-text 지시자와 v-html 지시자의 차이점은 무엇인가?</h2>
+    <div>
+        <p>
+            v-text : innerText. html 태그 제거됨.
+            <br>
+            v-html : innerHTML. html 태그 유지됨.
+        </p>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#my",
+        data: {
+            message: '<i>첫번째 Vue.js 앱 입니다!</i>',
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

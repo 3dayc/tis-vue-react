@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <xmp>
+        Vue 컴포넌트 만드는 방법을 배운다.
+
+        컴포넌트는
+            재사용 가능한 코드
+            template을 보완하여 만든 요소다.
+            Vue 컴포넌트는 인스턴스의 모든 옵션을 사용할 수 있습니다
+            component는 HTML템플릿과 더불어 데이터 셋팅, 함수 정의 등 다양한 작업을 할 수 있다.
+            component는 Vue.js의 핵심 요소이다.
+            재사용이 가능하다.
+            여러개의 Component 사용이 가능하다.
+            Vue.js 에서 제공하는 컴포넌트를 이용해 다양한 템플릿을 만들어 사용할 수 있다.
+
+        왜 컴포넌트를 사용하는가?
+            컴포넌트를 재사용하기 위해서.
+
+
+        Vue 컴포넌트 종류
+            전역 컴포넌트
+            지역 컴포넌트
+
+            전역 컴포넌트는 Vue.Component(tagName, options)로 정의되는 컴포넌트
+                tagName은 kebab-case를 사용한다. 소문자와 하이픈만 사용. 예시) global-component
+                전역 컴포넌트는 Vue.Component(tagName, options)를 사용하여 정의한다.
+                Vue.component("global-component", {
+                    // 옵션
+                });
+
+                사용는 커스텀 엘리먼트로
+                <global-component></global-component>로 사용할 수 있습니다
+
+                <div id="example">
+                    <global-component><!-- 전역 컴포넌트 --></global-component>
+                </div>
+
+                // 전역 컴포넌트 등록
+                Vue.component("global-component", {
+                  template: "<div>사용자 정의 컴포넌트 입니다!</div>"
+                });
+
+                // 루트 인스턴스 생성
+                new Vue({
+                  el: "#example"
+                });
+
+            지역 컴포넌트는 Vue 인스턴스의 components 옵션에 정의되는 컴포넌트
+                var Child = {
+                    template: "<div>사용자 정의 컴포넌트 입니다!</div>"
+                };
+
+                new Vue({
+                    // ...
+                    components: {
+                    // <global-component> 는 상위 템플릿에서만 사용할 수 있습니다.
+                    "global-component": Child
+                    }
+                });
+
+        Vue 컴포넌트 생성시 주의 사항
+            Vue 컴포넌트 data 옵션은 함수로 만들다.
+            Vue 인스턴스 data 옵션은 객체로 만든다.
+            <div id="example-2">
+                <simple-counter></simple-counter>
+                <simple-counter></simple-counter>
+                <simple-counter></simple-counter>
+            </div>
+
+            Vue.component("simple-counter", {
+                template: "<button v-on:click='counter += 1'>{{ counter }}</button>",
+                // 데이터는 기술적으로 함수이므로 Vue는 따지지 않지만
+                // 각 컴포넌트 인스턴스에 대해 같은 객체 참조를 반환합니다.
+                data: function () {
+                    return {
+                      counter: 0
+                    }
+                }
+            });
+
+            new Vue({
+                el: "#example-2"
+            });
+
+
+        Vue 컴포넌트 관계
+            부모 컴포넌트
+            자식 컴포넌트
+
+        Vue 컴포넌트 패턴
+            컨테이너 컴포넌트
+            프레젠테이션 컴포넌트
+            참조: https://blueshw.github.io/2017/06/26/presentaional-component-container-component/
+
+            프레젠테이션 컴포넌트
+                어떻게 보여지는지와 관련있다.
+                프레젠테이션 컴포넌트와 컨테이너 컴포넌트가 모두 그 안에 들어가 있다.
+                데이터를 가져오거나 변경하는 방법에 대해서 관여할 필요가 없다.
+                props 를 통해 배타적으로 callback 함수와 데이터를 받는다.
+
+                상태를 거의 가지고 있지 않다(만약 상태를 가지고 있다면, 데이터에 관한 것이 아닌 UI 상태에 관한 것이다).
+                예를들면 페이지, 사이드바, 스토리, 유저정보, 리스트 등이 있다.
+
+            컨테이너 컴포넌트
+                어떻게 동작하는지와 관련있다.
+                프레젠테이션 컴포넌트와 마찬가지로 프레젠테이션 컴포넌트와 컨테이너 컴포넌트 모두 가지고 있지만
+                감싼 divs 를 제외하고는 DOM 마크업을 가지고 있지 않는다. 스타일 역시 가지고 있지 않는다.
+
+                데이터와 기능(행동)을 프레젠테이션 컴포넌트와 다른 컴포넌트에 제공한다.
+
+                Flux(or Redux) 액션을 호출하고, 프레젠테이션 컴포넌트에 콜백함수로써 제공한다.
+                데이터 소스 역할을 하기 때문에 상태가 자주 변경된다.
+
+                예를들면 유저페이지, 팔로워 사이드바, 스토리 컨테이너, 팔로우한 유저 리스트 등이 있다.
+
+            컨테이너와 프레젠테이션 컴포넌트 분리시 장점
+                이 방법으로 컴포넌트를 작성하면 당신의 앱(기능)과 UI 에 대한 구분을 이해하기가 더 수월하다.
+                재사용성이 더 뛰어나다. 완전히 서로 다른 상태값과 함께 같은 프레젠테이션 컴포넌트를 사용할 수 있고,
+                재사용 될 수 있는 별도의 컨테이너 컴포넌트로 변경할 수 있다.
+
+                프레젠테이션 컴포넌트는 말하자면 앱의 팔레트와 같다. 앱의 싱글페이지 위에서 앱의 로직을 건드리지 않고
+                디자이너에게 모든 변화를 조정하게 할 수 있다.
+
+
+        [참조]
+            교재 page 52~61, 65
+            https://kr.vuejs.org/v2/guide/components.html
+    </xmp>
+    <hr>
+
+</body>
+</html>

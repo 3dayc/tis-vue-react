@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <style>
+
+    .styleBackground {
+        padding: 50px ;
+        background-color : #ffc53a ;
+        width : 250px ;
+        height : 100px ;
+        border-radius : 10px ;
+        text-align :  center
+    }
+    .styleButton {
+        font-size : 1em ;
+        width : 30px ;
+        height : 30px ;
+        font-family : sans-serif ;
+        color : #333333 ;
+        font-weight : bold ;
+        line-height : 3px
+    }
+    .styleText {
+        font-size : 72px ;
+        font-family : sans-serif ;
+        color : #333333 ;
+        font-weight : bold ;
+    }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        '+' 버튼 클릭하면 1씩 증가 <== 혼자서 
+        shift 키 와 '+' 버튼 클릭하면 10씩 증가 <== 같이 
+
+        작업 순서
+        1. '+' 버튼 클릭하면 1씩 증가하는 기능은 각자 구현한다.
+            ==> onClick 이벤트를 사용하여 처리
+        2. "shift 키 와 '+' 버튼 클릭하면 10씩 증가" 같이 구현한다.
+
+        작업 내역
+        1. CounterLabel 컴포넌트 만들기 .
+           CSS는 컴포넌트안에서 인라인 스타일로 작성한다.
+           class 속성 말고 style 속성을 사용하여 작성.
+           이미 작성된 CSS 를 사용하면 된다.
+           
+                /*
+                    .styleText {
+                        font-size : 72px ;
+                        font-family : sans-serif ;
+                        color : #333333 ;
+                        font-weight : bold ;
+                    }
+                */
+                style = {
+                    styleText : {...중략},
+                }
+                render(){
+                    return(
+                        <div style={this.style.styleText}>
+                            {this.props.count}
+                        </div>
+                    )
+                }
+            
+        2. CounterContainer 컴포넌트 만들기 .
+           CSS는 컴포넌트안에서 인라인 스타일로 작성한다.
+           class 속성 말고 style 속성을 사용하여 작성.
+           이미 작성된 CSS 를 사용하면 된다.
+           
+            /* 
+            .styleBackground {
+                padding: 50px ;
+                background-color : #ffc53a ;
+                width : 250px ;
+                height : 100px ;
+                border-radius : 10px ;
+                text-align :  center
+            }
+            .styleButton {
+                font-size : 1em ;
+                width : 30px ;
+                height : 30px ;
+                font-family : sans-serif ;
+                color : #333333 ;
+                font-weight : bold ;
+                line-height : 3px
+            }
+            */
+            style = {
+                styleBackground : {...중략},
+                styleButton : {...중략},
+            }
+            increase = (e)=> {
+                // 이벤트 핸들러는 constructor에서 this bind 처리한다.
+                console.log(this);//
+                console.log(event.target);//
+            }
+            render(){
+                return(
+                    <div style={this.style.styleBackground}>
+                        <CounterLabel count={this.state.count}></CounterLabel>
+                        <button style={this.style.styleButton} onClick={this.increase}>+</button>
+                    </div>
+                );
+            }
+            
+        3. ReactDOM 을 사용하여 화면에 붙인다.
+            예시)
+            ReactDOM.render(
+                <CounterContainer></CounterContainer>
+                ,
+                document.getElementById("app")
+            )
+
+    </xmp>
+	<hr>
+
+    <div id="app">
+        <div class="styleBackground">
+            <div class="styleText">
+                4
+            </div>
+            <button class="styleButton">+</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuex Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <pre>
+
+      1. Vuex란?
+       Vue.js의 상태 관리 라이브러리입니다.
+
+      1.1 상태 관리란?
+       상태 관리란 중앙 집중식으로 한 곳에서 여러 컴포넌트 간의 데이터를 관리한다는 것을 의미합니다.
+
+      1.2 상태 관리(State Management)가 왜 필요한가?
+       컴포넌트로 화면을 구성하는 경우 컴포넌트간의 데이터 공유가 필요합니다.
+       컴포넌트가 많은 경우 props나 이벤트, 이벤트버스를 사용하여 상태를 관리하는 것은 효율적이지 않습니다.
+       컴포넌트가 많은 경우 효율적인 컴포넌트 간의 통신이나 데이터 관리 방밥이 필요합니다.
+       그것이 Vuex 입니다.
+
+      1.3 상태 관리로 해결할 수 있는 문제점?
+       상태 관리는 중대형 규모의 웹 애플리케이션에서 컴포넌트 간에 데이터를 더 효율적으로 전달할 수 있습니다.
+
+       일반적으로 앱의 규모가 커지면서 생기는 문제점들은 다음과 같습니다.
+       . 너무 많은 props, event emit 사용
+       . Event Bus사용으로 인해 컴포넌트 간 데이터 흐름을 파악하기 어려운 경우
+       이러한 문제점이 발생 하는 경우 Vuex를 사용하면 쉽게 해결 할 수 있습니다.
+
+      1.4 Vuex 구성 5 요소
+       . view(==component) : 컴포넌트 나 인스턴스가 된다.
+       . actions : 사용자의 입력에 따라 반응할 methods.
+                   비동기적 로직을 수행
+                   this.$store.dispatch("action명", payload) 을 사용하여 호출
+       . mutations: 동기적 로직을 수행
+                   this.$store.commit("action명", payload) 을 사용하여 호출
+       . state : 컴포넌트 간에 공유할 data
+       . getter:
+
+    작업1
+        {{header}} 에는 "Vuex 사용 앱" 가 나오게
+        {{welcome}} 에는 "HELLO WORLD" 가 나오게
+        {{counter}} 에는 0 이 나오게
+    작업2
+        <button v-on:click="decrement">나를 빼줘</button>
+    </pre>
+    <hr>
+    <div id="app">
+        <h1>{{header}}</h1>
+        <h2>{{welcome}}</h2>
+        <h3>{{counter}}</h3>
+        <button v-on:click="increment">더해줘</button>
+        <button v-on:click="decrement">빼줘</button>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

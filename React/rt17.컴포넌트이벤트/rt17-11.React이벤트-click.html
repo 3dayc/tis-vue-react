@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+    <style>
+        .App {
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        컴포넌트 생성과 click 이벤트 핸들러 작성을 실습한다.
+
+        1. Greeting 컴포넌트 만들기
+            ...(중략)
+            let style1 = {...중략}
+            let style2 = {...중략}
+
+            return (
+                <div>
+                    <div style={style1} onClick={this.handlerClick1}>
+                        div1
+                    </div>
+                    <div style={style2} onClick={this.handlerClick2}>
+                        div2
+                    </div>                    
+                </div>
+            );
+
+        2. 스타일을 작성한다.
+            style1 = {
+                width: 100px;
+                height: 100px;
+                background: gray;
+                vertical-align: center;
+                line-height: 100px;
+            }
+            style2 = {
+                width: 100px;
+                height: 100px;
+                background: yellow;
+                vertical-align: center;
+                line-height: 100px;
+            }
+        3. div의 click 이벤트 핸들러를 작성하고 콘솔에 this 값을 출력한다.
+            handlerClick1(event){
+                console.log(this); // bind가 안되면 this는 undefined
+            }
+            handlerClick2 = (event)=>{
+                console.log(this); // bind가 되면 this는 Greeting 컴포넌트다
+            }
+            
+        4. ReactDOM 을 사용하여 화면에 붙인다.
+            예시)
+            ReactDOM.render( 
+                <Greeting></Greeting>
+                , 
+                document.getElementById("app") 
+            ) 
+    </xmp>
+
+    <div id="app"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

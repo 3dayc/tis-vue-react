@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Color Card</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+    <style>
+        body > div {
+            padding: 50px;
+            background-color: #ffffff;
+        }
+        .card {
+            display: inline-block;
+            height: 200px;
+            width: 150px;
+            padding: 0;
+            margin: 10px;
+            background-color: #ffffff;
+            webkit-filter: drop-shadow(0px 0px 5px #666666);
+            filter: drop-shadow(0px 0px 5px #666666);
+        }
+        .square {
+            height: 150px;
+            background-color: #ff6663;
+        }
+        .label {
+            font-family: sans-serif;
+            font-weight: bold;
+            padding: 13px;
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <xmp>
+        CSS로 만든 카드를 컴포넌트로 만들어 본다.
+        작업 순서
+        1. 컴포넌트 3개 만들기. Label, Square, Card   
+        1-1. Label 컴포넌트        
+            return (
+                <div className="label">
+                    {this.props.color}
+                </div>
+            );
+        1-2. Square 컴포넌트
+            let style = { backgroundColor: this.props.color }
+            return (
+                <div className="square" style={style}>
+                </div>
+            );
+        1-3. Card 컴포넌트==> 한번에 모든 속성을 넘기는 방법. 
+            ... (중략)
+            render() {
+                return (
+                    <div className="card">
+                        <Square {...this.props}></Square>
+                        <Label {...this.props}></Label>
+                    </div>
+                );
+            }
+    
+            this.props 가 아래와 같다고 했을 때
+            {
+                a:"1",
+                b:"2",
+                c:"3"
+            }
+            ...this.props을 사용하면 props 있는 값들이 풀려서 들어가게 된다.
+
+            <Square {...this.props}></Square> 라고 했을 때 
+            ...this.props을 사용하면
+            <Square a="1" b="2" c="3"></Square> 처럼 변환되어 실행된다.
+          
+        2. ReactDOM 을 사용하여 화면에 붙인다.
+        예시)    
+            ReactDOM.render(
+                <div>
+                    <Card color={"#ff6663"}></Card>
+                    <Card color={"#ffa737"}></Card>
+                </div>
+                ,
+                document.getElementById("app")
+            )   
+        
+        3. className 설정을 컴포넌트의 인라인스타일로 바꾼다. 
+            className="card"
+            ==>
+            styleSquare = {
+                height: "150px",
+                backgroundColor: "#ff6663",
+            }
+
+            className="label"
+            ==>
+            styleLabel = {
+                fontFamily: "sans-serif",
+                fontWeight: "bold",
+                padding: "13px",
+                margin: "0",
+                textAlign: "center",
+            }
+             
+        3. 상태값(state), 속성값(props), 메서드1(func1), 메서드2(func2) 가 있다가 했을 때
+           위의 3개 모두를 속성으로 넘기려면 어떻게 하면될까요? 
+            <Square {...this.props, ...this.state, this.func1, this.func2 }></Square> 라고 했을 때 
+    </xmp>
+    <hr>
+
+    <h2>CSS로 만든 카드</h2>
+    <div>
+        <div>
+            <div class="card">
+                <div class="square" style="background-color: #ff6663;">
+                    &nbsp;
+                </div>
+                <div class="label">
+                    #ff6663
+                </div>
+            </div>
+            <div class="card">
+                <div class="square" style="background-color: #ffa737;">
+                    &nbsp;
+                </div>
+                <div class="label">
+                    #ffa737
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>컴포넌트로 만든 카드</h2>
+    <div id="app">
+
+    </div>
+</body>
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->

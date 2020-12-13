@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mobile Project</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        header {
+            text-align: center;
+            height: 60px;
+        }
+
+        section {
+            text-align: center;
+            height: 150px;
+        }
+
+        footer {
+            text-align: center;
+            height: 60px;
+        }
+
+        /* step2. 배경색 지정*/
+        header {
+            background-color: #efb14e;
+        }
+
+        section {
+            background-color: #95db5e;
+        }
+
+        footer {
+            background-color: #78d0d1;
+        }
+
+
+        /* step3. 여백 주기 - margin , padding */
+        header {
+            margin: 0 0 20px 0;
+        }
+
+        section {
+            margin: 40px 20px;
+        }
+
+        div {
+            margin: 40px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        jQuery의 load 메서드를 이용하여 파일 결합 구현하기
+        jQuery를 사용하여 index.html 에서 header.html 과 footer.html을 import 한다.
+
+
+        반드시 "Open with Live Server"로 실행해야 한다.
+        왜나하면 ajax 를 이용해야 하기 때문.
+        <img src="fileload.png" alt="" >
+
+        jQuery의 load() 메서드를 이용한 파일 결합시의 문제점은 무엇인가?
+        ==> 페이지의 실행 순서와 연관됨
+
+    </pre>
+
+    <hr>
+    <div>
+        <div w3-include-header="header.html"></div>
+
+        <section id="page1" data-role="page">
+            <div class="content" data-role="content">
+                컨텐츠
+            </div>
+        </section>
+
+        <div w3-include-footer="footer.html"></div>
+    </div>
+</body>
+
+</html>
+
+<script src="../jquery-3.4.1.js"></script>
+<script>
+    // <div w3-include-header="header.html"></div> 찾기
+    $("div[w3-include-header]").load("header.html")
+
+    // <div w3-include-footer="footer.html"></div> 찾기
+    $("div[w3-include-footer]").load("footer.html")
+</script>

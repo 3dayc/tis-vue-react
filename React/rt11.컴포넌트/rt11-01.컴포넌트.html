@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+</head>
+
+<body>
+    <xmp>
+        컴포넌트는 무엇인가?
+
+
+        컴포넌트 종류
+        1. 클래스 컴포넌트
+            React.component
+            this.state
+            this.props
+            생명주기: 마운트/업데이트/언마운트
+            React.createRef()
+            React.createContext()
+            
+        2. 함수 컴포넌트 
+            useState() 훅
+            useEffect() 훅
+            useRef() 훅
+            useContext() 훅
+
+        3. 고차 컴포넌트
+            재사용 가능한 클래스 컴포넌트 만들 때.
+
+        왜 함수 컴포넌트를 사용하나?
+            ==> 클래스 컴포넌트의 문제점을 해결하기 
+            1. 생명주기 메서드에서 코드 스파게티 발생. 
+            2. 코드 난독화 오류 발생. 
+            3. 
+
+        작성  순서
+            단계1: 스크립트 플러그인 추가하기 or  React 객체 import.
+            단계2. React 객체 import 여부 확인
+                console.log(React);
+                console.log(ReactDOM);
+            단계3. Component 만들기
+            단계4. ReactDOM.render() 에 컴포넌트 주입
+    </xmp>
+    <hr>
+
+    <div id="app"></div>
+</body>
+
+</html>

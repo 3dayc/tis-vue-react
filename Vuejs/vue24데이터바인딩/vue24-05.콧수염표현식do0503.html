@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Javascript Expression</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <xmp>
+        콧수염 표현식, {{ }} 에서는 
+        첫째, 콧수염 표현식 에서는 자바스크립트를 사용할 수 있다.
+        둘째, 콧수염 표현식 에서는 변수 선언문과 분기문은 사용 할 수 없다.
+        세째, 콧수염 표현식 에서는 삼항 연산자는 사용 가능하다.
+        네째, 복잡한 연산은 computed 속성에서 처리하고 화면에서는 결과만 표시하게 작성한다.
+
+        Vue 작성 원칙은 뷰, 데이터, 로직의 분리
+
+        [참조]page 101, 102
+    </xmp>
+    <hr>
+
+    <div id="app">
+        <!-- 1. -->
+        <div>
+            선언문은 사용 불가능
+            <br>
+            {&nbsp;{ var a = 10; }&nbsp;}
+        </div>
+        <hr>
+
+        <div>
+            분기문은 사용 불가능
+            <br>
+            {&nbsp;{ if (true) {return 100} }&nbsp;}
+        </div>
+        <hr>
+
+        <div>
+            삼항 연산자는 사용 가능
+            <br>
+            {{ awesome ? 100 : 0 }}
+        </div>
+        <hr>
+
+        <!-- 2. -->
+
+        <div>
+            콧수염 표현식을 사용한 데이터 바인딩 : <br>
+            HTML이 아닌 일반 텍스트로 해석<br>
+            <br>
+            <p>{{ message }}</p>
+        </div>
+        <hr>
+
+        <div>
+            콧수염 표현식 안에서 자바스크립트 연산자 사용 가능 <br>
+            <br>
+            <p>{{ message + "!!!" }}</p>
+        </div>
+        <hr>
+
+        <div>
+            콧수염 표현식 안에서 자바스크립트 사용 가능하지만 <br>
+            가능한 연산은 인스턴스 속성에서 처리하는 것이 좋다.<br>
+            <br>
+            {{ message.split('').reverse().join('') }}
+        </div>
+        <hr>
+
+        <div>
+            복잡한 연산은 인스턴스 computed 속성으로 계산 후 최종 값만 표현<br>
+            message.split("").reverse().join(" ") <br>
+            computed 속성을 사용하는 방법: <br>
+            <br>
+            {{ reversedMessage }}
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+       el: "#app" ,
+       data: {
+           awesome: true, // ture / false 설정
+           message: "Hello, Vue.js",
+       },
+       computed: {
+            reversedMessage : function() {
+                return this.$data.message.split(" ").reverse().join(" ");
+            },
+       },
+    });
+
+</script>

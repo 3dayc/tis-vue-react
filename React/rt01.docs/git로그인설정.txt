@@ -1,0 +1,10 @@
+
+
+git 로 push 할 때 로그인 창 띄우기게 하려면 아래의 명령어를 프로픔트(CMD) 창에서 실행한다.
+
+64bit 인 경우.
+"C:\Program Files\Git\mingw64\libexec\git-core\git-credential-manager.exe" uninstall
+
+
+32bit 인 경우.
+"C:\Program Files (x86)\Git\mingw32\libexec\git-core\git-credential-manager.exe" uninstall

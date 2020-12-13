@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        img {
+            padding: 5px;
+            width: 130px;
+            height: 130px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        연습 문제. 직접 작성하여 본다. 
+        html 태그에 Vue 지시지 작성을 연습하는 예제입니다.
+        
+        작업사항
+        1. html 속성(어트리뷰트)에 Vue 지시자를 설정하시오. 
+            해당 img 태그를 클릭하면 아래의 그림이 나오게 한다. 
+            img1 ==> ../images/im1.jpg
+            img2 ==> ../images/im2.jpg
+            img3 ==> ../images/im3.jpg
+            img4 ==> ../images/im4.jpg
+            img5 ==> ../images/im5.jpg
+        2. 이벤트 핸들러와 지시자 작성
+            "img 태그를 클릭하면" 이벤트 핸들러 작성도 필요.
+    </pre>
+    <h2>&lt;img id="" src="" title="" alt="" /&gt;</h2>
+    <hr>
+
+    <div id="app">
+        <h3>어트리뷰트 추가</h3>
+        <img id="img1" src="../images/im1.jpg" title="im1.jpg" alt="im1.jpg" />
+        <img id="img2" />
+        <img id="img3" />
+        <img id="img4" />
+        <img id="img5" title="im5.jpg" />
+
+        <h3>어트리뷰트 제거</h3>
+        <img id="img6" src="../images/im5.jpg" title="im5" alt="im5.jpg" />
+    </div>
+    <hr>
+
+
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

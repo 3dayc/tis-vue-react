@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <pre>
+
+      Vue 인스턴스 속성은 e dt mc^2 life cycle 를 실습한다.
+      
+      data 프로퍼티에 message를 추가하고 this.$set()을 사용하여 message를 바꾸는 것을 연습한다.
+
+      작업 내용
+        1. 페이지가 로딩되면 {{message}} 자리에 "change message at mounted!!!" 를 출력하시오.
+        2. 버튼을 클릭하면 {{message}} 자리에 "change message when a button clicked!!!" 를 출력하시오.
+        3. 페이지가 로딩 3초 후에 {{message}} 자리에 "change message after 3 seconds!!!" 를 출력하시오.
+        4. 페이지가 로딩 5초 후에 {{message}} 자리에 "change message after 5 seconds!!!" 를 출력하시오.
+
+    </pre>
+    <hr>
+    <div id="my">
+        <h2>{{message}}</h2>
+        <button v-on:click="doClick">message 값 바꾸려면 click</button>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#my",
+        data: {
+            message: "change message at mounted!!!",
+        },
+        //template: ``,
+        methods: {
+            doClick: function(event){
+                console.log(event.target)
+                //this.$data.message = "change message when a button clicked!!!";
+                var time = new Date().toLocaleString()
+                this.$set( this.$data, "message", "change message when a button clicked!!!" + time);
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+            
+            window.setTimeout( ()=>{ 
+                console.log(this);//
+                this.$set(this.$data, "message", "change message after 3 seconds!!!");
+            }, 3000); // 3000ms = 3s
+
+            var self = this;
+            window.setTimeout( function () {                 
+                console.log(self);//
+                self.$set(self.$data, "message", "change message after 5 seconds!!!");
+            }, 5000); // 5000ms = 5s
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

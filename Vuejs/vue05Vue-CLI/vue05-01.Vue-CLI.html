@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Project</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+<body>
+    <xmp>
+    Vue-CLI 는 Vue 프로젝트 생성을 위한 스캐폴딩이다. CLI 는 command line interface의 약자.
+
+    Vue-CLI 구성요소
+        CLI: @vue/cli
+        CLI서비스: @vue/cli-service
+            웹팩
+            웹팩개발서버
+        CLI플러그인: @vue/cli
+            router
+            vuex
+            @vue/cli-plugin-babel
+            @vue/cli-plugin-eslint
+            @vue/cli-plugin-unit-jest
+
+    작업 순서
+        step 1. npm install -g @vue/cli     # Vue-CLI 다운로드
+        step 2. vue create  vuerouter       # Vue 프로젝트 생성. package.json 생성.
+        step 3. cd vuerouter                # 폴더 이동
+        step 4. npm install                 # package.json 의 라이브러리 다운로드
+        step 5. npm run build               # 웹팩 빌드. /dist/ 에 파일 만들어짐.
+        step 6. npm run serve               # 프로젝트 실행
+
+
+    CLI 템플릿
+        . webpack-simple Vue 로더 + 빠른 프로토타이핑을 위한 스캐폴딩 웹팩
+            >> npx vue init webpack-simple
+        . webpack Vue 로더, 핫로더, 린팅테스트, CSS 추출 등 모든 기능을 가진 스캐폴딩 웹팩
+            >> npx vue init webpack
+        . pwa : 웹팩 기반의 PWA 스캐폴딩 웹팩
+            >> npx vue init pwa
+
+    Vue에서 템플릿 파일을 만드는 방법.
+        <template></template> 태그를 사용하는 방법. 파일로 분리
+        파일 확장자 .vue 해야함.
+
+    SFC 파일 구조.
+        < template>
+            <div>
+                템플릿예제
+            </div>
+        < /template>
+        < script>
+            export default {
+                components:{   },
+                computed:{  }
+            }
+        < /script>
+        <style lang="scss" scoped>
+        </style>
+
+
+
+    CLI 프로젝트 폴더 구조 :
+        생성된 프로젝트의 src 폴더 밑에 모듈별로 가독성 높은 폴더를 만들어 사용하는 것이 좋다.
+        ├─ package.json
+        ├─ README.md
+        ├─ dist                     # 빌드 결과물 폴더
+        ├─ node_modules             # 모듈 폴더
+        ├─ public
+        │   └─ index.html
+        │   └─ favion.ico
+        └─ src
+            ├─ main.js
+            ├─ App.vue
+            ├─ components        컴포넌트
+            ├─ routes            라우터
+            ├─ views             라우터 페이지
+            ├─ store             상태 관리
+            ├─ api               api 함수
+            ├─ utils             필터 등의 유틸리티 함수
+            ├─ mixins            믹스인
+            ├─ plugins           플러그인
+            ├─ translations      다국어
+            ├─ images            이미지
+            ├─ fonts             폰트
+            └─ assets            기타 자원
+                    └─ logo.png
+
+    </xmp>
+
+</body>
+</html>

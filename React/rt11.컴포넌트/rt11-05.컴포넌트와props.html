@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+</head>
+
+<body>
+    <xmp>
+        HelloWorld 컴포넌트를 만들고 
+        props를 사용하여 인자를 넘겨 받는 방법을 학습한다.
+        아래 "실행 화면 예시"의 숫자 부분에 this.props 를 사용. 
+
+        실행 화면 예시)
+        Hello, react world!!! 1 - component
+        Hello, react world!!! 2 - component
+        Hello, react world!!! 3 - component
+        Hello, react world!!! 4 - component
+        Hello, react world!!! 5 - component
+
+
+        <div>
+            Hello, react world!!! {this.props.index} - component
+        </div>
+    </xmp>
+    <hr>
+
+    <div id="app">
+        요기에 
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->

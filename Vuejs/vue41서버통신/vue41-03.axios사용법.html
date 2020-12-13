@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>서버의 데이터를 대상 엘리먼트에 삽입하기</title>
+
+    <style>
+        #app>div {
+            width: 200px;
+            margin: 3px;
+            float: left;
+        }
+
+        hr {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+
+    1. "메뉴 보기 1"을 클릭하면 item.html 의 전체 내용을 id="message1"에 추가하시오.
+    2. "메뉴 보기 2"을 클릭하면 item.html 의 내용 중에 ul 이하 부분만을 id="message2"에 추가하시오.
+    3. 동적으로 추가된 메뉴에 이벤트 설정하기
+        추가된 음식명을 클릭하면 클릭된 음식명을 alert로 출력하시오.
+        if( event.target.tagName.toLowerCase() === 'li' ) {
+            alert(  $( event.target ).html()  );
+        }
+
+    ※ 실행 전에  서버를 실행하세요. ex) node server.js
+    </pre>
+
+    <hr>
+    <div id="app">
+        <div>
+            <a href="#" id="menu1" v-on:click="clickMenu1">메뉴 보기 1</a>
+            <span id="message1" v-html="message1" v-on:click="clickAlert">
+                <!--
+                    <p> 중 식 메 뉴 </p>
+                    <ul>
+                    <li> 짜장면 </li>
+                    <li> 짬뽕 </li>
+                    <li> 기스면 </li>
+                    <li> 탕수육 </li>
+                    </ul>
+                    <p> 메뉴를 골라주세요.</p>
+                -->
+            </span>
+        </div>
+
+        <div>
+            <a href="#" id="menu2" v-on:click="clickMenu2">메뉴 보기 2</a>
+            <span id="message2" v-html="message2" v-on:click="clickAlert">
+                <!--
+                <ul>
+                    <li> 짜장면 </li>
+                    <li> 짬뽕 </li>
+                    <li> 기스면 </li>
+                    <li> 탕수육 </li>
+                </ul>
+                -->
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+
+
+

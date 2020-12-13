@@ -1,0 +1,107 @@
+
+
+code snippets 만들기
+
+https://www.youtube.com/watch?v=t4ESp_po6Wc
+
+
+    "React Class Component": {
+        "prefix": "rcc",
+        "body": [
+            "//import React from \"react\";",
+            "//import ReactDOM from \"react-dom\"",
+            "",
+            "console.log(React);",
+            "console.log(ReactDOM);",
+            "",
+            "class ${1:${TM_FILENAME_BASE}} extends React.Component {",
+            "",
+            "    static defaultProps = {  /*  props의 디폴트 값 설정 */  } ",
+            "    static propsTypes = {  /* props의 프로퍼티 타입 설정 */ } ",
+            "    state = {",
+            "        // 상태값(변수)을 정의한다.",
+            "",
+            "    }",
+            "    style = {",
+            "        // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.",
+            "",
+            "    }",
+            "    func = {",
+            "        // fucn에 정의된 메서드는 반드시 constructor에서 this bind() 해야 한다.",
+            "",
+            "    }",
+            "    constructor(props) {",
+            "        super(props);",
+            "        // this 바인딩",
+            "        ",
+            "        // ref 만들기",
+            "        ",
+            "    }",
+            "    componentDidMount() {",
+            "        // 마운트 완료 후에  : 페이지 load 될 때 한번",
+            "    }",
+            "    componentDidUpdate(prevProps, prevState) {",
+            "        // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다",
+            "    }",
+            "    componentWillUnmount() {",
+            "        // 언마운트 완료 후에 : 페이지 unload 될 때 한번",
+            "    }",
+            "    handler = (event)=>{",
+            "        // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다",
+            "        console.log(event.target);//",
+            "    }",
+            "    render() {",
+            "        return (",
+            "            <div>",
+            "                ${2:}",
+            "            </div>",
+            "        );",
+            "    }",
+            "}",
+            "",
+            "//export default ${1:${TM_FILENAME_BASE}};"
+        ],
+        "description": "React Class Component"
+    },
+    "React Functional Component": {
+        "prefix": "rfc",
+        "body": [
+            "//import React, { useState, useEffect, useRef, useReducer, useContext, useMemo, useCallback, useImperativeHandle, useLayoutEffect, useDebugValue } from \"react\";",
+            "//import ReactDOM from \"react-dom\"",
+            "",
+            "console.log(React);",
+            "console.log(React.useState); // 상태값",
+            "console.log(React.useEffect); // 생명주기",
+            "console.log(React.useRef); // 속성값",
+            "console.log(ReactDOM);",
+            "",
+            "const ${1:${TM_FILENAME_BASE}} = (props) => {",
+            "    //const [user, setUser] = React.useState({ userId: 0, name: \"\", age: 0, });",
+            "    return (",
+            "        <div>",
+            "            ${2:}",
+            "        </div>",
+            "    );",
+            "};",
+            "",
+            "//export default ${1:${TM_FILENAME_BASE}};"
+        ],
+        "description": "React Functional Component"
+    },
+    "React script import": {
+        "prefix": "reactscript",
+        "body": [
+            "",
+            "<!-- react 플러그인 include   -->",
+            "<!-- 주의: 사이트를 배포할 때는 \"development.js\"를 \"production.min.js\"로 대체하세요. -->",
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js\">/* JSX를 자바스크립트로 변환 */</script>",
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js\"> /* import { React} from \"react\"; */</script>",
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js\">/* import { ReactDOM } from \"react-dom\"; */</script>",
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js\"> /* import {Redux} from \"redux\"; */ </script>",
+            "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js\">/* import {ReactRedux} from \"react-redux\"; */</script>",
+            "<script type=\"text/babel\">",
+            "",
+            "</script>"
+        ],
+        "description": "React script"
+    }

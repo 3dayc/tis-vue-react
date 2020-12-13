@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <xmp>
+      학습할 내용
+        Vue 인스턴스 속성은 e dt mc^2 life cycel 이다.
+        Vue 인스턴스 생성 방법을 반복 학습한다.
+        CSS 태그 선택자에 대해 학습한다.
+
+      실습 1.
+        2개의 "{{message}}" 중에 첫번째에만 "실습 완성 축하!!!!!" 가 나오게 작성하시오.
+        주어진 태그를 변경하지 않고 완성하는 것을 첫번째로 하나
+        태그를 바꾸거나 태그의 속성을 추가해서 완성해도 됩니다.
+
+
+     [참조]page 40
+    </xmp>
+    <hr>
+
+    <div>
+        {{ message }}, app1
+    </div>
+
+    <script type="text/x-template" id="template1">
+        <div id="app1">
+            {{ message }}, app1
+        </div>
+    </script>
+
+    <div>
+        {{ message }}, app2
+    </div>
+
+    <script type="text/x-template" id="template2">
+        <div id="app2">
+            {{ message }}, app2
+        </div>
+    </script>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"> /* vue 플러그인 임포트 */</script>
+<script>
+    debugger;
+    var divs = document.getElementsByTagName("div");
+    divs[0].setAttribute("id", "app1");
+    divs[1].setAttribute("id", "app2");
+
+    var obj = {
+        message: "Hello",
+    }
+    new Vue({
+        el: "#app1", /* CSS 선택자 : 첫번째만 해당  */
+        data: obj,
+        template: "#template1",
+    })
+    new Vue({
+        el: "#app2", /* CSS 선택자 : 첫번째만 해당  */
+        data: obj,
+        template: "#template2",
+    })
+</script>

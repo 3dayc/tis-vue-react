@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Event Handling</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        span {
+            display: inline-block;
+            width: 140px;
+            cursor: pointer;
+            margin: 5px
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        v-on 디렉티브와 이벤트 핸들러 설정 예제.
+        v-on 디렉티브는 methods 속성과 같이 사용된다.
+
+        [참조]page 105, 106, 107
+    </xmp>
+    <hr>
+
+    <div id="app">
+        <h3>1씩 증가하는 click 이벤트 핸들러 작성 <== 각자 </h3>
+        <span>1씩 증가: {{sum1}}</span>
+        <button v-on:click="clickBtn1">1씩 증가</button>
+        <hr />
+
+        <h3>input 태그에 입력된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자 </h3>
+        <span>{{numInput}}씩 증가: {{sumInput}}</span>
+        <input type="number" name="number" v-model:value="numInput">
+        <button v-on:click="clickBtnInput">{{numInput}} 씩 증가</button>
+
+        <h3>data-num 속성에 설정된 값만큼 증가하는 이벤트 핸들러 작성 <== 같이 </h3>
+        <span>10씩 증가: {{sum10}}</span>
+        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
+        <hr />
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            sum1: 0,
+            sumInput: 0,
+            numInput: 0,
+            sum10: 0,
+        },
+        //template: ``,
+        methods: {
+            clickBtn1:function(event){
+                console.log(event.target);
+                //this.$data.sum1 = this.$data.sum1 + 1;
+
+                this.$set( this.$data, "sum1", this.$data.sum1 + 1 )
+            },
+            clickBtnInput: function (event) {
+                console.log(event.target);
+                // input태그의 value 속성값 가져오기.
+                var value = this.$data.numInput; // 문자열
+                // 문자열 ==> 숫자 변환 : Number()
+                var num = Number( value );
+
+                //this.$data.sumInput = this.$data.sumInput + num;
+
+                this.$set(this.$data, "sumInput", this.$data.sumInput + num )
+            },
+            clickBtn10: function (event) {
+                console.log(event.target);
+                // "data-이름" 속성으로 전달되는 값은 dataset 으로 받을 수 있다.
+                // event.target.dataset.이름 
+                // data-num="10" ==> event.target.dataset.num 
+                debugger;
+                var num = event.target.dataset.num; // 문자열
+                
+                // 문자열 ==> 숫자 변환 : Number()
+                var num = Number(num);
+
+                //this.$data.sum10 = this.$data.sum10 + num;
+
+                this.$set( this.$data, "sum10", this.$data.sum10 + num);
+            },
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

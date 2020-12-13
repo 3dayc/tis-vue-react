@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event Bus Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        input:focus {
+            background-color: lightskyblue;
+            border: 3px solid #555;
+        }
+    </style>
+
+</head>
+<body>
+    <xmp>
+        ref 를 이용하는 상태관리 방법을 배운다.
+
+        ref 를 언제 사용하는가?
+        1. 직접 DOM에 접근 할 때
+        2. focus 줄 때
+
+        vue에선 $refs로 접근
+
+        how to know element is focused or not : document.activeElement
+
+        [참조]page 62~75
+    </xmp>
+    <hr>
+    <div id="app">
+        <p>
+            ref 사용 예제<br>
+            myinput1에 포커스 있으면 myinput2에 포커스 아니면 myinput1에 포커스<br>
+        </p>
+        <div>
+            <label for="myinput1">myinput1</label>
+            <input type="text" ref="myinput1" id="myinput1">
+        </div>
+        <div>
+            <label for="myinput2">myinput2</label>
+            <input type="text" ref="myinput2" id="myinput2">
+        </div>
+        <button v-on:click="showLog">show</button>
+    </div>
+
+</body>
+
+</html>
+
+
+<!-- vue 플러그인 임포트   -->

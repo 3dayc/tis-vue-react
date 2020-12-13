@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .csbord {
+            border: solid 4px gray;
+        }
+
+        .whsize {
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        click 이벤트를 사용하는 것을 복습한다.
+
+        javascript 에서의 class 속성 설정 방식을 학습한다.
+        vue.js 에서의 class 속성 설정 방식을 학습한다.
+
+        자바스크립를 이용하여
+
+        1. 학습. "버튼1" 을 클릭하면
+            getElementById()를 사용하여 배경색이 orange 인 엘리먼트를 찾아서
+            class 속성에 csbord 와 whsize 스타일을 추가하고
+            style 속성에 배경색(background-color)을 aqua 로 설정하시오.
+
+            DOM API 에서 속성값 읽기 : getArribute()
+            DOM API 에서 속성값 쓰기 : setArribute()
+
+        2. 과제. "버튼2" 을 클릭하면
+            querySelector()를 사용하여 배경색이 orange 인 엘리먼트를 찾아서
+            csbord 와 whsize 스타일을 추가하고 배경색을 yellow 로 설정하시오.
+
+        3. 학습. 
+            v-bind 지시자를 사용하여 id="app3" 엘리먼트에 class 속성을 적용하시오.
+            id="app3" 엘리먼트를 찾고 csbord 와 whsize 스타일을 추가하고 <== 같이 
+            배경색을 yellow 로 설정하시오. <==각자 
+    </xmp>
+    <hr>
+
+    <div class="whsize csbord">
+        csbord 와 whsize class 속성이 적용된 모습
+    </div>
+    <hr>
+
+    <div>
+        <div id="app" style="background-color: orange;">
+            자바스크립를 사용하여 csbord 와 whsize class 속성 설정<br>
+        </div>
+
+        <br>
+
+        <button id="btn1" onclick="btn1_onclick()">버튼1</button>
+        <button id="btn2" onclick="btn2_onclick()">버튼2</button>
+    </div>
+    <hr>
+
+    <div id="app3">
+        <div style="background-color: orange;" v-bind:class="css1">
+            Vue.js의 v-bind 디렉티브(지시자)를 사용하여 csbord 와 whsize class 속성 설정<br>
+        </div>
+        <br>
+        <button v-on:click="btn6_onclick(this.event, 'whsize', true )">whsize class 속성 추가</button>
+        <button v-on:click="btn6_onclick(this.event, 'whsize', false)">whsize class 속성 제거</button>
+        <br>
+        <button v-on:click="btn6_onclick(this.event, 'csbord', true )">csbord class 속성 추가</button>
+        <button v-on:click="btn6_onclick(this.event, 'csbord', false)">csbord class 속성 추가</button>
+        <br>
+        <button v-on:click="btn5_onclick(this.event, true )">csbord 와 whsize class 속성 추가</button>
+        <button v-on:click="btn5_onclick(this.event, false)">csbord 와 whsize class 속성 제거</button>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-- vue 플러그인 임포트   -->

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        .strong {color:red; font-weight:bold; font-size:1.2em;}
+        label { display: inline-block; width: 80px;}
+        #app > div { margin: 5px 0 ;}
+    </style>
+</head>
+<body>
+    <xmp>
+        리액트에서 CRUD 방법을 학습한다.
+
+        CRUD 학습을 위해서 아래 사항에 대해서 미리 학습한다.
+            1. array.map() 사용법
+            2. array.reduce() 사용법
+            3. array.filter() 사용법
+            
+        테스트 기본 데이터
+            const array = [
+                {id:1, name: "슈퍼맨", power: 100},
+                {id:2, name: "아쿠아맨", power: 300},
+                {id:3, name: "스파이더맨", power: 500},
+                {id:4, name: "배트맨", power: 30},
+            ]
+        
+            array 에서 최대값 id 찾기
+                Object Array 에서 최대값 구하는 방법은 구글 검색을 이용한다.
+                ==> 검색조건: javascript object array max
+            
+                방법 1. reduce() 메서드 사용.
+                    var maxObj = array.reduce( function(prev, next){
+                        return prev.id > next.id ? prev:  next  // 최대값 id가 있는 객체
+                        return prev.id < next.id ? prev:  next  // 최소값 id가 있는 객체
+                    })
+                    var newid  = maxObj.id + 1
+
+                방법 2. map()과 Math.max()를 사용하는 방법
+                    var arrIds = array.map( function(el){
+                        return el.id
+                    })
+                    var newid  = Math.max(...arrIds) + 1
+        
+            
+        작업 순서 
+        
+        1. CrudInput 컴포넌트 만들기
+            state = {
+                /* CrudInput 에서만 사용될  상태값 */
+                user: {
+                    name: "",
+                    power: 0,
+                },
+            }
+            
+        2. CrudList 컴포넌트 만들기
+            "rt07-09.JSX.반복문.html"를 참고하여 코드를 완성하시오. 
+            
+            power가 300이상인 사람은 글자색을 red로 bold스타일로 출력하세요.
+            예시) 
+            render() {
+                const items = this.props.items;
+                const arrs = items.map( function(item, index){
+                    return ( 
+                        <li key={index}>{item.id}</li>
+                    )
+                })
+                return (
+                    <div>
+                        {arrs}
+                    </div>
+                )
+            }
+        
+        3. CrudApp 컴포넌트 만들기
+        
+            state = {
+                /* 컴포넌트간 공유 데이터 */
+                list: [
+                ],
+            }
+            func = {
+                /* 하위 컴포넌트로 전돨될 메서드 */
+                doIns(item){
+                    // ...생략
+                },
+                doUp(id){
+                    // ...생략
+                },
+                doDown(id){
+                    // ...생략
+                },
+                doDel(id){
+                    // ...생략
+                },
+                doEdit(paramMan){
+                    // ...생략
+                },
+            }
+            constructor(props){
+                super()
+                // this 바인드
+                this.func.doUp   = this.func.doUp.bind(this)
+                this.func.doDown = this.func.doDown.bind(this)
+                this.func.doDel  = this.func.doDel.bind(this)
+                this.func.doEdit = this.func.doEdit.bind(this)
+                this.func.doIns  = this.func.doIns.bind(this)
+            }
+            render(){
+                return (
+                    <CrudInut {...this.state} {...this.func}>
+                    </CrudInput>
+                    <CrudList {...this.state} {...this.func}>
+                    </CrudList>
+                )
+            }
+            
+        4. ReactDOM 사용하여 화면 붙이기
+            ReactDOM.render( <CrudApp></CrudApp>, document.getElementById("app") )
+
+
+        5. CrudListItem 컴포넌트 만들기
+            5-1. 편집여부를 확인하기 위한 상태값(state) 만들기
+                state = {
+                    isEditMode: false
+                }
+
+            5-2. formView: 데이터 표시용 JSX
+            <tr key={item.id} className={"strong"}>
+                    <td>{item.id}</td>
+                    <td>{item.name}</td>
+                    <td>{item.power}</td>
+                    <td>
+                        <button onClick={this.doDel}>Del</button>
+                        <button onClick={this.doUp}>Power Up</button>
+                        <button onClick={this.doDown}>Power Down</button>
+                        <button onClick={this.doEdit}>Edit</button>
+                    </td>
+            </tr>
+        
+            5-3. formEdit:  데이터 편집용 JSX
+            <tr key={item.id} className={"strong"}>
+                    <td>{item.id}</td>
+                    <td>
+                        <input 
+                            type="text" 
+                            name="name" 
+                            ref={this.refUserName }
+                            defaultValue={item.name}
+                        />
+                    </td>
+                    <td>
+                        <input 
+                            type="text" 
+                            name="power" 
+                            ref={this.refUserPower }
+                            defaultValue={item.power}
+                        />
+                    </td>
+                    <td>
+                        <button onClick={this.doUp}>Power Up</button>
+                        <button onClick={this.doDown}>Power Down</button>
+                        <button onClick={this.doSave}>Save</button>
+                    </td>
+            </tr> 
+        
+    </xmp>
+    <hr>
+    <div id="app">
+        <div>
+            <h1>Creat Read Update Delete</h1>
+            <div>
+                <label for="">Name : </label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="">Power : </label>
+                <input type="text">
+            </div>
+            <button>Add</button>
+            <hr>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>POWER</th>
+                    <th>CRUD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <td>1</td>
+                    <td>슈퍼맨</td>
+                    <td>100</td>
+                    <td>
+                        <button>Del</button>
+                        <button>Power Up</button>
+                        <button>Power Down</button>
+                        <button>Edit</button></td>
+                </tr>
+                <tr class="strong">
+                    <td>2</td>
+                    <td>아쿠아맨</td>
+                    <td>300</td>
+                    <td><button>Del</button> <button>Power Up</button> <button>Power Down</button>
+                        <button>Edit</button></td>
+                </tr>
+                <tr class="strong">
+                    <td>3</td>
+                    <td>스파이더맨</td>
+                    <td>500</td>
+                    <td><button>Del</button> <button>Power Up</button> <button>Power Down</button>
+                        <button>Edit</button></td>
+                </tr>
+                <tr class="strong">
+                    <td>4</td>
+                    <td>배트맨</td>
+                    <td>30</td>
+                    <td><button>Del</button> <button>Power Up</button> <button>Power Down</button>
+                        <button>Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

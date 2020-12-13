@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css" />
+
+    <style>
+        #parent {
+            background-color: lightblue;
+            padding: 50px;
+        }
+
+        #child {
+            background-color: lightcoral;
+            margin: 50px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+
+    자식 컴포넌트에서 부모 컴포넌트의 상태값을 변경하고 싶은 경우에는 상태값 올림을 이용한다.
+    부모 컴포넌트에서 자식 컴포넌트로 부모의 이벤트 핸들러 함수를 props 를 이용하여 전달하고
+    자식 컴포넌트에서 부모 컴포넌트의 이벤트 핸들러 함수를 호출하는 식으로 데이터를 넘긴다.
+
+    state 올림 예제를 작성한다.
+    1. 여러개의 상태값을 자식으로 넘기는 방법.
+        ==> spread 연산자
+    2. 여러개의 함수를 자식으로 넘기는 방법.
+        ==> spread 연산자 + this 바인딩.
+
+    구글 검색: javascript nested object this bind
+    1. https://stackoverflow.com/questions/57197155/javascript-binding-nested-function-in-object-to-root-object
+    </pre>
+    <hr>
+
+    <div id="app">
+    </div>
+</body>
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+
+

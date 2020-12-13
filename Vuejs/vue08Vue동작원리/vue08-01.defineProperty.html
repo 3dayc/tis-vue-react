@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <xmp>
+        Vue Reactivity의 동작 원리에 대해서 배운다.
+
+        Object.defineProperty()를 이용해서 양방향 바인딩의 개념을 익힌다.
+        Object.defineProperty() 메서드의 get, set 설정 방법을 학습한다.
+
+        F12 로 개발자 도구를 열고 console 창에 아래 순으로 입력한다.
+
+        <div id="app">...</div> 실습
+        1-1. vm1.$data.msg = "ccc" 입력 후 엔터. 값의 변화를 관찰한다.
+        1-2. vm1 입력 후 엔터.
+
+        <div id="app2">...</div> 실습
+        2-1. data.msg = "aaa" 입력 후 엔터.
+        2-2. console.log( data.msg) 입력 후 엔터
+        2-3. data 입력 후 엔터.
+
+        [참조]page 178
+    </xmp>
+    <hr>
+
+    <h1>Vue Reactivity의 동작 원리</h1>
+
+    <hr color="red">
+    <pre>
+        Vue 를 이용하여 #app1 의 {{msg}} 에 "Hello" 를 출력한다.
+        Vue 의 인스턴스 명은 vm1 으로 만드시오. var vm1 = new Vue();
+        예제) vue06-03.hello-vue.html 을 참조. 
+    </pre>
+    <div id="app">
+        <h2>{{msg}}</h2>
+    </div>
+
+    <hr color="red">
+    <pre>
+        뷰 인스턴스의 
+            data: {
+                msg: "Hello",
+            }
+        의 기능을 직접 구현하여 본다
+
+        #app2 에 Object.defineProperty() 메서드의 get, set 설정하고 "123" 을 출력한다.
+        1. document.getElementById() 를 사용하여 #app2 엘리먼트를 찾는다.
+        2. 엘리먼트의 innerHTML 또는 innerText 프러퍼티에 설정 
+
+    </pre>
+    <h2 id="app2">
+        이자리에 있는 정보를 가져오다.
+    </h2>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    // Vue를 이용하여 #app 의 {{msg}} 부분에 "Hello" 를 출력하라. 
+    var vm1 = new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            msg: "Hello",
+        },
+    });
+
+    /*
+    data: {
+        msg: "Hello",
+    }
+    의 기능을 직접 구현하여 본다
+    
+    #app2 에 Object.defineProperty() 메서드의 get, set 설정하고 "123" 을 출력한다.
+    1. document.getElementById() 를 사용하여 #app2 엘리먼트를 찾는다.
+    2. 엘리먼트의 innerHTML 또는 innerText 프러퍼티에 설정 
+
+    */
+    var div = document.getElementById("app2")
+    
+    var data = {}
+    Object.defineProperty( data, "msg", {
+        get: function(){
+            return div.innerHTML /* 이자리에 있는 정보를 가져오다 */
+        },
+        set: function(value){
+            div.innerHTML = value
+        }
+    })
+
+    debugger;
+    console.log( data )
+
+    data.msg = "123" // set 기능. 화면에 123 표시된다. ==> 화면이 바뀐다. 
+    data["msg"] = "abc" // set 기능
+
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+</head>
+
+<body>
+    <pre>
+
+    전자 시계를 만들면서 React의 클래스 컴포넌트 만드는 방법을 학습한다.
+    1. 클래스 컴포넌트를 만드시오.
+        컴포넌트명: ElectronClock
+    2. JSX 에서 style 작성법을 학습한다.     
+       font-size: 80pt;
+    3. 현재 시간 얻는 방법: 
+        const d = new Date();
+        const h = d.getHours();
+        const m = d.getMinutes();
+        const s = d.getSeconds();
+    4. 매초 렌더링의 개념을 익한다. 
+        window.setInterval(함수, 시간) 사용 
+
+
+    기능 추가 : 
+        오전인 경우 숫자앞에 0 붙이고 마지막 2개 글자 추출하기 : substr()
+        var href = "004";
+        var ext = href.substr(-2); // href.substr(href.lenght-2, 2);
+
+
+    작성  순서
+        단계1: React 객체 스크립트 플러그인 추가 or 객체 import
+        단계2. React 객체 import 여부 확인
+            console.log(React);
+            console.log(ReactDOM);
+        단계3. Component 만들기
+        단계4. Component 화면에 컴포넌트 주입
+
+    <img src="../images/electronclock.png" alt="">
+
+    </pre>
+    <hr>
+
+    <div id="app"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+
+
+

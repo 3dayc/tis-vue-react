@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <xmp>
+        View - Model 디자인 패턴에 대해서 알아본다.
+
+        MVP(Model, View, Procedure)
+            winform, jsp , asp, php, jQuery
+
+        MVC(Model, View, Controller) :
+            데이터 흐름 단방향
+            스프링, angular1,
+
+        MVVM(Model, View, ViewModel)
+            데이터 흐름 양방향
+            WPF,
+
+        MVW(Model, View, Whatever)
+            AngularJS
+
+        Flux(Action, Dispatch, Store, View)
+            데이터가 한 방향으로 흐름.
+            redux, Veux
+
+
+        MVVM 패턴
+            Model은 다른 데이터 소스(데이터베이스, 파일 또는 서버)에 액세스하는 책임을 집니다
+            View는 데이터의 상태를 반영하여 적절한 형식으로 데이터를 나타내고
+            사용자 상호작용과 이벤트를 수집합니다.
+
+            ViewModel은 Model 이 소화 할 수 있는 형태로
+            View에서 Model로 필요한 모든 데이터를 전달함으로써
+            View와 Model 간의 통신을 처리 합니다.
+
+            유효성 검사는 ViewModel 컴포넌트에서 수행합니다.
+
+            이 패턴은 두 단계로 작동합니다.
+            View는 ViewModel을 알고 있고,
+            ViewModel의 프로퍼티를 업데이트하며,
+            뒤에서 발생하는 모든 변경 사항을 추적합니다.
+
+            ViewModel은 View의 존재를 인식하지 못합니다.
+            비슷한 방식으로 Model 은 ViewModel의 존재를
+            모르고 오직 ViewModel 이 Model 에 액세스합니다.
+
+            ViewModel 은 이벤트와 데이터를 Model 에 전달하며,
+            이러한 데이터는 Model 이 해석 할 수 있는 형태로
+            View에 의해 푸시 됩니다.
+
+            ViewModel 은 Model 에 의해 생성된
+            모든 변경 사항을 추적하여
+            View 및 비즈니스 규칙에 따라 필요한 신호를
+            View로 푸시 합니다.
+
+
+            [출처] MVC , MVP, MVVM 아키텍처 패턴. 작성자 개성산전연구소
+
+            ==========================================================
+
+            1. Model - 데이터를 가지는 객체. 여기선 model 객체
+            2. ViewModel : simple객체는 Vue객체이자 ViewModel 객체이다.
+            (l) Vue 객체의 el속성은 html 요소 ( element ) 를 나타낸다.
+            (2) data 속성은 모델 객체를 참조한다. 즉 Vue객체가 html요소와 데이터를 참조하고 있다.
+
+            데이터(모델)이 변경되면 ViewModel 객체는 즉시 html요소(뷰)에 반영시킨다
+            {{}}표현식을 이용해 html dom에 데이터를 렌더링 한다.
+
+            모델을 변경하면 ViewModel 객체를 통해 html dom이 즉시 변경됨
+
+            [참조]page
+    </xmp>
+    <hr>
+
+</body>
+
+</html>

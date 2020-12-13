@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .score {
+            border: solid 1px black;
+        }
+
+        .warning {
+            background-color: orange;
+            color: purple;
+        }
+
+        .warnimage {
+            width: 18px;
+            height: 18px;
+            top: 5px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        computed 옵션은 스타일 적용할 때도 사용할 수 있다.
+        입력 값이 올바른 범위에 포함되지 않을 때 스타일을 적용하는 예제를 작성하여 본다.
+        입력 값이 1부터 100까지일 때만 유효한 값으로 한다.
+        유효한 경우에는 input 태그에서 warning 스타일을 제거하고 img 엘리먼트를 감추게 하시오.
+        유효하지 않은 경우에는 input 태그에 warning 스타일을 적용하고 img 엘리먼트를 보이게 하시오.
+
+        computed 프로터티를 사용하면 편하다. 
+    </xmp>
+    <hr>
+    <div id="example">
+        <div>
+            <p>1부터 100까지만 입력가능합니다.</p>
+            <div>
+                점수 : <input type="text" class="score" v-model="score" v-bind:class="info" />
+                <img src="../images/error.png" class="warnimage" v-show="info.warning" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

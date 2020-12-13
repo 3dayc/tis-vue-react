@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ref는</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+</head>
+
+<body>
+    <xmp>
+        ref
+            reference 의 줄밈
+            ref는 DOM 노드에 이름을 부여하는 방법
+            Virtual DOM 이 아니라 DOM 노드를 직접 접근할 때 사용
+            ref는 전역으로 작동하지 않고 컴포넌트 내부에서만 작동.
+
+
+        언제 ref 를 사용해야 하나?
+            입력 태그에서 값을 get/set 할 때(input,textarea,select)
+            포커스 줄 때
+            스크롤 박스 조작할 때
+            Canvas 에 그림 그릴 때
+            부모컴포넌트에서 자식컴포넌트 함수 호출시
+
+
+        ref 사용법
+            1. 콜백 ref 방식
+                ref={el => this.ref이름 = el}
+            2. React.createRef() 방식
+            class CustomTextInput extends React.Component{
+                constructor(props){
+                    this.refInput = React.createRef()
+                }
+                focusTextInput = () => {
+                    this.refInput.current.focus()
+                }
+                render(){
+                    return(
+                        <input type="text" ref={this.refInput}/>
+                    )
+                }
+            }
+
+        부모컴포넌트에서 자식컴포넌트의 함수 호출하기
+            -컴포넌트의 ref는 해당 컴포넌트의 인스턴스를 가르킨다
+            -인스턴스 이므로 모든 데이터와 함수를 가져올수 있다
+
+            class AutoFocusText extends React.Component{
+                constructor(props){
+                    this.refText = React.createRef()
+                }
+                componentDidMount(){
+                    console.log(this.refText.current.state)
+                    this.refText.current.focusTextInput()
+                }
+                render(){
+                    return(
+                        <CustomTextInput ref={this.refText}/>
+                    )
+                }
+            }
+    </xmp>
+
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->

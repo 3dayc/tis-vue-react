@@ -1,0 +1,120 @@
+<!-- ex08_crud.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        .strong {
+            color: red;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+        }
+
+        #app>div {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        CRUD 방법을 학습한다.
+
+        아래의 데이터를 table형태로 출력하고
+        power가 300이상인 사람은 글자색을 red로 bold스타일로 출력하세요.
+
+        [
+            {id:1, name: "슈퍼맨", power: 100},
+            {id:2, name: "아쿠아맨", power: 300},
+            {id:3, name: "스파이더맨", power: 500},
+            {id:4, name: "배트맨", power: 30},
+        ]
+
+        CRUD 작업 순서
+        1. 페이지가 실행되면 name input 태그에 focus 주기
+            ==> ref 를 사용해야 한다.
+        2. Read 작업
+            ==> 실행시 바인딩할 데이터
+            [
+                {id:1, name: "슈퍼맨", power: 100},
+                {id:2, name: "아쿠아맨", power: 300},
+                {id:3, name: "스파이더맨", power: 500},
+                {id:4, name: "배트맨", power: 30},
+            ]
+        3. Delete 작업
+            ==> 배열에서 삭제 ==> splice(배열의방번호, 개수) 사용.
+        4. Update 작업
+            ==> Up / Down
+            Up   ==> +100 증가
+            Down ==> -50 감소
+        5. Create 작업
+            ==> "Add" 버튼을 클릭했을 때
+            최대 id 값을 구하는 방법.
+            방법1. .reduce()
+            방법2. .map() 를 사용하는 방법
+
+            Object Array 에서 최대값 구하는 방법은 구글 검색을 이용한다.
+            ==> 검색조건: javascript object array max
+
+        개별 작업
+        1. Create 작업에 power 에 대한 유효성 검증 기능 추가
+            power 에 숫자가 아닌 값이 들어오면
+            1-1. alert로 "숫자만 입력 가능합니다." 출력하고
+            1-2. power를 빈값으로 초기화
+            1-3. power input 태그에 focus 주기
+
+    </xmp>
+    <div id="app">
+        <h1>Creat Read Update Delete</h1>
+        <div>
+            <label for="">Name : </label>
+            <input type="text" ref="myinput" v-model="user.name">
+        </div>
+        <div>
+            <label for="">Power : </label>
+            <input type="text" ref="myuserpower" v-model="user.power">
+        </div>
+        <button v-on:click="doIns">Add</button>
+        <hr>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>POWER</th>
+                <th>CRUD</th>
+            </tr>
+            <tr v-for="(man, index) in list" v-bind:key="man.id" v-bind:class="{strong:man.power>=300}">
+                <td>{{man.id}}</td>
+                <td>{{man.name}}</td>
+                <td>{{man.power}}</td>
+                <td>
+                    <button v-on:click="doUp(index)">Power Up</button>
+                    <button v-on:click="doDown(index)">Power Down</button>
+                    <button v-on:click="doEdit(index)">Edit</button>
+                    <button v-on:click="doDel(index)">Del</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+</head>
+
+<body>
+    <xmp>
+        <!-- react 플러그인 include   -->
+        <!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js"> /* import { React} from 'react'; */</script>
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">/* import { ReactDOM } from 'react-dom'; */</script>
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* JSX를 자바스크립트로 변환 */</script>
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js">/* redux import */</script>
+        < script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">/* react-redux import */</script>
+        < script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> /* jQuery library */</script>
+
+
+        // After (16.0)
+        import React, {Component} from 'react';
+        import ReactDOM from 'react-dom';
+
+        console.log(React);
+        console.log(ReactDOM);
+
+        class Comp extends React.Component {
+            // 컴포넌트의 변수 초기값 설정
+            state= { mesg: "hi!!!!" }
+            constructor (props) {
+                super( props);
+
+                // this 바인딩
+                this.handler = this.handler.bind(this);
+            }
+            componentDidMount() {
+                // 마운트 완료 후에  : 한번만
+            }
+            componentDidUpdate() {
+                // 업데이트 완료 후에 : 여러번, state 가 변경될 때마다
+            }
+            componentWillUnmount() {
+                // 언마운트 완료 후에 : 페이지 unload 될 때 한번.
+            }
+            handler(e){
+                // 이벤트 핸들러는 constructor(생성자)에서 this를 bind() 처리해야 한다
+            }
+            handler = (e)=>{
+                // 이벤트 핸들러를 화살표 함수로 만들면 this를 bind() 생략해도 된다
+            }
+            render() {
+                return (
+                    <div onClick={this.handler}>{this.props.name}, {this.state.mesg}</div>
+                );
+            }
+        };
+        // Component 를 화면에 붙이는 작업.
+        ReactDOM.render(
+            <Comp name="Batman"></Comp>, document.getElementById("app")
+        );
+
+
+        React
+            Dev build with warnings: react/dist/react.js
+            Minified build for production: react/dist/react.min.js
+        React with Add-Ons
+            Dev build with warnings: react/dist/react-with-addons.js
+            Minified build for production: react/dist/react-with-addons.min.js
+        React DOM (include React in the page before React DOM)
+            Dev build with warnings: react-dom/dist/react-dom.js
+            Minified build for production: react-dom/dist/react-dom.min.js
+        React DOM Server (include React in the page before React DOM Server)
+            Dev build with warnings: react-dom/dist/react-dom-server.js
+            Minified build for production: react-dom/dist/react-dom-server.min.js
+
+
+        작성  순서
+            단계1: React 객체 스크립트 플러그인 추가 or 객체 import
+            단계2. React 객체 import 여부 확인
+                console.log(React);
+                console.log(ReactDOM);
+            단계3. Component 만들기
+            단계4. Component 화면에 컴포넌트 주입
+
+    </xmp>
+    <hr>
+
+    <div id="app">
+        ?????
+    </div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Data Binding</title>
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .container {
+            color: red;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        [1] v-if 디렉티브 :
+        [2] v-else 디렉티브 :
+        [3] v-else-if 디렉티브 :
+        [4] v-show 디렉티브 :
+            The use of the v-show directive is almost identical to that of v-if.
+            The only differences are that v-show does not support the <template> syntax
+            렌더링 안됨
+            display:none; <--> display:block; 를 사용.
+
+        [참조]
+        페이지 104
+        https://vuejs.org/v2/guide/conditional.html
+        https://riptutorial.com/vue-js/example/11981/v-if---v-else
+    </xmp>
+    <hr>
+
+
+    <h2>v-show 연습</h2>
+    <div id="app1">
+        <button v-on:click="clickBind">클릭</button>
+        <!-- will render 'Condition met' -->
+        <div id="example">
+            <h1 v-show="a">Condition met</h1>
+        </div>
+        <!-- will render 'This is shown' -->
+        <div id="example">
+            <h1 v-show="!a">This is hidden</h1>
+            <h1 v-show="a">This is shown</h1>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            a : true,
+        },
+        //template: ``,
+        methods: {
+            clickBind: function(event){
+                console.log(event.target);
+                this.$set( this.$data, 'a', !this.$data.a );
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

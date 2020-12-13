@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css" />
+
+    <style>
+        #parent {
+            background-color: lightblue;
+            padding: 50px;
+        }
+
+        #child {
+            background-color: lightcoral;
+            margin: 50px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+
+    자식 -> 부모 데이터 전달하는 예제를 작성한다.
+
+    자식 컴포넌트에서 부모 컴포넌트의 상태값을 변경하고 싶은 경우에는 상태값 올림을 이용한다.
+    부모 컴포넌트에서 자식 컴포넌트로 부모의 이벤트 핸들러 함수를 props 를 이용하여 전달하고
+    자식 컴포넌트에서 부모 컴포넌트의 이벤트 핸들러 함수를 호출하는 식으로 데이터를 넘긴다.
+
+    컴포넌트 2개 만들기: Child, Parent
+
+    기능 추가
+    1. '+' 버튼 클릭하면 1씩 증가하는 기능은 각자 구현한다.
+    ==> onClick 이벤트를 사용하여 처리
+    2. "shift 키 와 '+' 버튼 클릭하면 10씩 증가" 같이 구현한다.
+
+    구글 검색: React pass parameter to parent component or call parent function on ES6
+    https://osc131.tistory.com/137
+    https://maxlibin.com/react-call-parent-function-on-es6/
+
+    </pre>
+    <hr>
+
+    <div id="app">
+        <div id="parent">
+            <div id="child">
+                4
+                <br/>
+                I am a child
+                <br/>
+                <button onClick="doParentToggleFromChild">
+                    toggle
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 "development.js"를 "production.min.js"로 대체하세요. -->
+
+
+

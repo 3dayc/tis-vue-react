@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-12</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        #app {
+            width: 150px;
+            height: 150px;
+            text-align: center;
+        }
+
+        #app.ready {
+            background: pink;
+            color: brown;
+        }
+
+        #app.active {
+            background: green;
+            color: tomato;
+            border-radius: 30%;
+        }
+
+        #app.done {
+            background: yellow;
+            color: blue;
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <pre>
+	  Vue.js 에서 class 속성 적용 방식.
+	  1. 단일 class 적용. ex) class="active" 
+	     ==> 문자열로 처리 
+	  2. 다중 class 적용. ex) class="active done"
+	     ==> true / false 로 처리 
+
+
+
+      미리 설정되어 있는 CSS 를 사용하여 만드시오.
+
+      div#app을 클릭하면 state값을 변경하는 메소드를 구성하세요.
+      ready => active => done => ready
+
+      #app {width:150px; height:150px; text-align:center;}
+      #app.ready {background:pink; color:brown;}
+      #app.active {background:green; color:tomato; border-radius:30%;}
+      #app.done {background:yellow; color:blue; border-radius:50%;}
+    </pre>
+    <!-- div#app을 클릭하면 state값을 변경하는 메소드를 구성하세요.
+        ready => active => done => ready -->
+    <div id="app" v-bind:class="state" v-on:click="change">
+        {{msg}}
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+<body>
+    <xmp>
+
+        부모 컴포넌트에서 자식 컴포넌트에게 데이터를 전달하는 방법을 연습한다.
+
+        작업 순서
+            1. Vue 인스턴스를 만든다.
+            2. template 속성 설정
+               component-top 의 template 속성에는 <p>{{ propsdata }}</p> 만 설정.
+               component-bottom 의 template 속성에는 <p>{{ propsdata }}</p> 만 설정.
+            3. Vue 인스턴스에서 child-component 로 메시지를 전달 할 수 있게 설정하다.
+                <!-- 팁 : 오른쪽에서 왼쪽으로 속성을 읽으면 더 수월합니다. -->
+                <child-component v-bind:propsdata="message"></child-component>
+
+        표시할 데이터:
+            "Top message!!! passed from Parent Component"
+            "Bottom message!!! passed from Parent Component"
+        [참조]page 74-75
+    </xmp>
+
+    <img src="../images/components_parent_child.png" alt="" srcset="">
+    <hr>
+    <div id="app">
+        <!-- 기억이 잘 안나시면 아래 형식을 참고하세요. -->
+        <!-- v-bind:props속성="상위 컴포넌트 데이터 속성" -->
+        <component-top v-bind:propsdata="msgTop"></component-top>
+
+        <!-- #할일 3 -->
+        <!-- component-bottom 등록 -->
+        <component-bottom v-bind:propsdata="msgBtm"></component-bottom>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

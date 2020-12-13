@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Javascript Expression</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <xmp>
+        Vue 인스턴스에서 템플릿을 만드는 방법과 
+        템플릿 사용시의 주의 사항을 학습한다.
+
+        문제.
+        1. app1. inline 템플릿을 사용하는 방법
+           '<i>콧수염 괄호를 이용한 데이터 출력</i>' 가 바인딩 되게 하시오.
+            ==> 각자.
+
+        2. app2. template 속성을 사용하여 템플릿을 지정하는 방법
+           '<p>template 속성을 이용한 데이터 출력. {{message2}} </p>' 가 
+           바인딩 되게 하시오.           
+           인스턴스에 template 속성을 설정하는 경우의 확인 사항.
+           "사랑해~~~"는 남아있는가? 사라지는가?
+           ==> 같이
+
+        3. app3. x-template 을 사용하여 템플릿을 지정하는 방법
+            < script type="text/x-template" id="template3">
+                <p>x-template을 이용한 데이터 출력. {{message3}} </p>
+            < /script>
+           ==> 같이
+    </xmp>
+    <hr>
+
+    <div>
+        <div id="app1">
+            <p>{{ message }}</p>
+        </div>
+
+        <div id="app2">
+            사랑해~~~
+        </div>
+
+        <div id="app3">
+            사랑해~~~
+        </div>
+        <script type="text/x-template" id="template3">
+            <p>script를 이용한 템플릿 출력. {{message3}} </p>
+        </script>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            message: "<i>콧수염 괄호를 이용한 데이터 출력</i>",
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app2",
+        data: {
+            message: "<i>template 속성을 이용한 데이터 출력</i>",
+        },
+        template: `
+            <p>template 속성을 이용한 데이터 출력. {{message}} </p>
+        `,
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            message: "<i>x-template을 이용한 데이터 출력</i>",
+        },
+        template: "#template3",
+    });
+    
+</script>

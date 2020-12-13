@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #app > div {
+            width: 300px;
+            height: 250px;
+            margin: 3px;
+            float: left;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1> axios 사용할 때 </h1>
+        <div>
+            <div>
+                <a href="#" id="menu1" v-on:click="clickMenu1">메뉴 보기 1:</a>
+            </div>
+            <br>
+            <a href="http://localhost:5050/text" target="_blank">http://localhost:5050/text</a>
+            <p>
+                <span id="message1" v-text="message1"> ? </span>
+            </p>
+        </div>
+        <div>
+            <div>
+                <a href="#" id="menu2" v-on:click="clickMenu2">메뉴 보기 2:</a>
+            </div>
+            <br>
+            <a href="http://localhost:5050/html" target="_blank">http://localhost:5050/html</a>
+            <p>
+                <span id="message2" v-html="message2"> ?? </span>
+            </p>
+        </div>
+        <div>
+            <div>
+                <a href="#" id="menu3" v-on:click="clickMenu3">메뉴 보기 3:</a>
+            </div>
+            <br>
+            <a href="http://localhost:5050/json" target="_blank">http://localhost:5050/json</a>
+            <p>
+                <span>
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>description</th>
+                        </tr>
+                        <tr v-for="(item, index) in message3" :key="item.id">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.description}}</td>
+                        </tr>
+                    </table>
+                </span>
+            </p>
+        </div>
+        <div>
+            <div>
+                <a href="#" id="menu4" v-on:click="clickMenu4">메뉴 보기 4:</a>
+            </div>
+            <br>
+            <a href="http://localhost:5050/xml" target="_blank">http://localhost:5050/xml</a>
+            <p>
+                <span>
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>description</th>
+                        </tr>
+                        <tr v-for="(item, index) in message4" :key="item.id">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.description}}</td>
+                        </tr>
+                    </table>
+                </span>
+            </p>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+
+
+
+

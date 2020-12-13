@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 바인딩</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <xmp>
+        html 태그 = 엘리먼트 + 텍스트 + 어트리뷰트(속성)
+
+        데이터 바인딩이란?
+            데이터를 html 태그(엘리먼트, 텍스트)로 변환해주는 기법이다.
+
+        데이터 바인딩 지시자:
+            [1] {{ }} 콧수염 표현식을 사용한 데이터 바인딩.
+                HTML이 아닌 일반 텍스트로 데이터를 해석합니다.
+                콧수염 표현식은 HTML 속성에는 사용할 수 없습니다. ==> HTML 속성에는 v-bind 지시자를 사용
+                콧수염 표현식안에서 자바스크립트 사용 가능하다
+                    표현식 안에서 변수 선언은 사용 할 수 없다.
+                    표현식 안에서 if~else는 사용 할 수 없다.
+                    표현식 안에서 삼항 연산자는 사용 가능하다.
+                    복잡한 연산은 computed 속성에서 처리하고 화면에서는 결과만 표시하게 작성한다.
+
+            [2] v-text 지시자를 사용한 데이터 바인딩.
+                단방향 데이터 바인딩.
+                innerText 속성과 비슷.
+                태그 문자열이 화면에 나타남.
+                {{ }} 동일한 표현임.
+                html 태그 제거됨.
+
+            [3] v-html 지시자를 사용한 데이터 바인딩.
+                단방향 데이터 바인딩.
+                innerHTML 속성과 비슷.
+                태그 문자열을 파싱하여 화면에 나타냄.
+                html 태그 유지됨.
+                HTML을 출력하려면 v-html 지시자를 사용해야 합니다.
+                v-text 를 사용 권장.
+                xss 공격에 취약.
+
+    </xmp>
+</body>
+</html>

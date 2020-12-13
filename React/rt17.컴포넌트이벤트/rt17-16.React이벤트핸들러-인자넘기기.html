@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 핸들러에 인자를 넘기는 방법 - React </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        span {
+            width: 70px;
+            height: 50px;
+            float: left;
+            background-color: red;
+            cursor: pointer;
+            margin: 5px
+        }
+        .red {
+            background-color: red;;
+        }
+        .blue {
+            background-color: blue;;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+
+        1. 이벤트 핸들러(리스너)에 이벤트 객체를 넘기는 방법에 대해서 알아본다.
+
+            가능한 방법
+            <button onClick={this.handlerClick}              >handlerClick              </button>
+
+            불가능한 방법
+            <button onClick={this.handlerClick(this)}        >handlerClick(this)        </button>
+            <button onClick={this.handlerClick(event)}       >handlerClick(event)       </button>
+            <button onClick={this.handlerClick(window.event)}>handlerClick(window.event)</button>
+            <button onClick={this.handlerClick(window)}      >handlerClick(window)      </button>
+
+
+        2. 이벤트 핸들러(리스너)의 매개변수를 넘기는 방법에 대해서 알아본다.
+
+           dataset 방식. data-속성명  ==> event.target.dataset.속성명. 범용적
+           <span className="blue" onClick={this.clickWithNoParam}> </span>
+           <span className="blue" onClick={this.clickWithNoParam} data-param1="123"> </span>
+           <span className="blue" onClick={this.clickWithNoParam} data-param2="abc"> </span>
+           <span className="blue" onClick={this.clickWithNoParam} data-param1="123"  data-param2="abc"> </span>
+
+
+        "rt17-06.이벤트핸들러-인자넘기기.html" 를 참고하시오.
+    </xmp>
+
+    <hr>
+    <div id="app">
+        <div>
+            <h3>가능한 방법</h3>
+            <button onClick={this.handlerClick}              >handlerClick              </button>
+            <br />
+            <br />
+            <h3>불가능한 방법</h3>
+            <button onClick={this.handlerClick(this        )}>handlerClick(this)        </button>
+            <button onClick={this.handlerClick(event       )}>handlerClick(event)       </button>
+            <button onClick={this.handlerClick(window.event)}>handlerClick(window.event)</button>
+            <button onClick={this.handlerClick(window      )}>handlerClick(window)      </button>
+        </div>
+
+        <hr/>
+
+        <div>
+            <h3>가능한 방법</h3>
+            <span className="blue" onClick={this.clickWithNoParam}> </span>
+            <span className="blue" onClick={this.clickWithNoParam} data-param1="123"> </span>
+            <span className="blue" onClick={this.clickWithNoParam} data-param2="abc"> </span>
+            <span className="blue" onClick={this.clickWithNoParam} data-param1="123"  data-param2="abc"> </span>
+            <br/>
+            <h3>불가능한 방법</h3>
+            <span className="red" onClick={this.clickWithParam(event)}>      </span>
+            <span className="red" onClick={this.clickWithParam(event, 123)}>      </span>
+            <span className="red" onClick={this.clickWithParam(event, null, 'abc')}></span>
+            <span className="red" onClick={this.clickWithParam(event, 123, 'abc')}></span>
+            <br/>
+        </div>
+    </div>
+
+</body>
+
+</html>

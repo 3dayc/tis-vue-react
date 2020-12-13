@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>폼 데이터를 JSON 형태로 변환</title>
+    <style>
+        div { font-weight: bold; }
+
+        .profile { position: relative; z-index: 10; zoom: 1; border: 1px solid #dcdcdc; border-bottom: 0; height: 99px; _width: 298px }
+        .profile .user_area { background-color: #f3f4f3; border-bottom: 1px solid #dcdcdc; height: 54px; position: relative; z-index: 10 }
+        .profile .user_info { position: relative; padding: 8px 0 4px 58px; zoom: 1 }
+        .profile .user_thumbnail { position: absolute; left: 11px; top: 5px; width: 42px; height: 42px; overflow: hidden }
+        .profile .user_thumbnail img { width: auto; height: auto; max-width: 100%; max-height: 100% }
+        .profile .user_thumbnail .mask { width: 100%; height: 100%; position: absolute; left: 0; top: 0 }
+
+        .profile .private { margin-bottom: 5px; line-height: 19px; white-space: nowrap; position: relative }
+        .profile .private .user_name { max-width: 90px; *width: 90px; vertical-align: middle; position: relative; overflow: hidden; box-sizing: content-box; margin-right: 6px }
+        .profile .private .user_name a { color: #2f3743; font-weight: bold }
+        .profile .private .user_name a:hover { text-decoration: none }
+        .profile .private .user_name a strong { max-width: 79px; *width: 79px; vertical-align: top; *vertical-align: middle }
+        .profile .private .user_name a:hover strong { text-decoration: underline }
+        .profile .private .login_on { width: 17px; height: 11px; margin: 4px 2px 0 0; overflow: hidden; background-position: -20px -340px; vertical-align: top }
+        .profile .private .link_myinfo { color: #848688; text-decoration: underline }
+        .profile .private .set_login_protect { width: 12px; height: 18px; background-position: -58px 4px; vertical-align: top; margin-left: -1px }
+        .profile .private .btn_logout { position: absolute; right: 12px; border: 1px solid #d1d1d1; color: #848688; height: 16px; overflow: hidden; vertical-align: top }
+        .profile .private .btn_logout .btn_inr { border: 1px solid #fff; border-right: 0; border-bottom: 0; background-color: #f6f7f8; padding: 0 4px 0; height: 15px; line-height: 15px; vertical-align: top; *line-height: 17px }
+
+        .bar { width: 1px; height: 16px; background-position: 100% -18px; vertical-align: top; overflow: hidden }
+
+    </style>
+
+</head>
+<body>
+    <pre>
+
+      서버 주소: http://locahost:5050/login
+
+      서버 받환값 형태: {"username":"9ec9nmfh6q","email":"email@mail.com","password":"a075d1"}
+
+      1. axios 로 데이터 받아오기
+        1.1 입력된 데이터(아이디, 패스워드)를 전송 데이터로 보내고.
+
+      2. then 메서드 안에서
+        2.1. div.login 감추기 혹은 지우기.
+        2.2. div.profile 보이기.
+        2.3. ??? 부분을 서버에서 받아온 username 값으로 바꾸시오.
+
+
+    폼 데이터를 JSON 형태로 변환
+        검색: jquery form filed object
+        http://stackoverflow.com/questions/5603117/jquery-create-object-from-form-fields
+        사용법:  var obj = serializeJSON( $(form).serializeArray() );
+
+    Blocked by CORS policy: The 'Access-Control-Allow-Origin'
+        https://www.digitalocean.com/community/questions/blocked-by-cors-policy-the-access-control-allow-origin-mean-stack
+
+    </pre>
+
+    <hr>
+
+    <div>
+        테스트 순서 <br>
+        1. 서버 구동: node server.js. 동영상 참조 <br>
+        2. 아이디: uid01, 패스워드: pwd01 <br>
+        <br>
+    </div>
+    <div id="app">
+
+        <template v-if="showMe">
+            <div class="login">
+                <form>
+                    <input type="hidden" name="seq" value="1">
+                    <label> 아이디를 입력하세요 : </label>
+                    <input type="text" name="userid"/>  <br/>
+                    <label> 패스워드를 입력하세요 :</label>
+                    <input type="password"  name="password"/>  <br/>
+                    <input type="checkbox" name="hobby" value="music"> music
+                    <input type="checkbox" name="hobby" value="yoga"> yoga
+                    <input type="checkbox" name="hobby" value="reading"> reading <br/>
+                    <input type="button" id="submit" value="전송" v-on:click="clickLogin" />
+                </form>
+            </div>
+        </template>
+        <template v-else>
+            <div class="profile">
+                <div class="user_area">
+                    <div class="user_info">
+                        <a href="#" class="user_thumbnail">
+                            <span class="mask"></span>
+                            <img id="profile_image" src="myInfo.gif">
+                        </a>
+                        <div class="private">
+                            <span class="user_name"><a href="#"><strong id="user_name">{{user_name}}<strong>님</a></span>
+                            <a href="#" target="_parent" class="link_myinfo">내정보</a>
+                            <a href="" target="_parent" class="btn_logout">
+                                <span class="btn_inr" v-on:click="clickLogout" >로그아웃</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <hr>
+        <div id="result">
+            <ul>
+                <!-- javascript for( var system in  systems); 문과 같다. -->
+                <li v-for="(val, i) in results" v-bind:key="i">{{ val }}</li>
+            </ul>
+            {{result}}
+        </div>
+
+    </div>
+</body>
+</html>

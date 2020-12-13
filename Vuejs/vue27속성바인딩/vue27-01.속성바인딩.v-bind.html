@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Data Binding</title>
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+    <style>
+        .container {
+            color: red;
+            font-weight: bold;
+            font-size: 20pt;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+
+        v-bind 디렉티브에 대해서 알아본다.
+
+        [1] v-bind 디렉티브 :
+            v-bind 디렉티브는 html 태그의 속성들을 바인딩 하기 위해 사용함.
+            반응적으로 HTML 속성을 갱신하는데 사용됩니다.
+            v-bind 지시자로 설정된 html attribute 는 반드시 Vue 인스턴스의 data 속성에 등록해야 한다.
+
+            사용 예시)
+            v-bind:id
+            v-bind:class ==> css클래스를 바인딩하기 위해 사용
+            v-bind:style
+            v-bind:value
+            v-bind:src
+
+        [참조]page
+    </xmp>
+    <hr>
+
+    <h2>v-bind 연습</h2>
+    <div id="app1">
+        <p v-bind:id="idA">
+            <button v-on:click="clickBindId">클릭</button>
+            아이디 바인딩
+        </p>
+        <p v-bind:class="classA">
+            <button v-on:click="clickBindClass">클릭</button>
+            클래스 바인딩
+        </p>
+        <p v-bind:style="styleA">
+            <button v-on:click="clickBindStyle">클릭</button>
+            스타일 바인딩
+        </p>
+        <p>
+            <button v-on:click="clickBindValue">클릭</button>
+            <input id="a" type="text" v-bind:value="message">
+        </p>
+        <p>
+            <button v-on:click="clickBindSrc">클릭</button>
+            <img v-bind:src="imagePath" />
+        </p>
+    </div>
+    <hr>
+
+    <h2>v-bind 실습</h2>
+    <div id="app2">
+        <p>버튼 클리식 나오는 이미지 : action_refresh.gif</p>
+        <p>
+            <button v-on:click="clickBindSrc">클릭</button>
+            <input id="a" type="text" v-bind:value="message" placeholder="입력하세요" />
+            <img v-bind:src="imagePath" />
+        </p>
+    </div>
+
+    <hr>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘리먼트 찾기</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <pre>
+
+      태그 찾기 API
+
+      +───────────────────────────────────+─────────────────────+
+      | 메소드 이름                                                          | 설명                                     |
+      +───────────────────────────────────+─────────────────────+
+      | document.getElementById(아이디)                                      | 아이디를 사용해 객체 선택. 한개 리턴     |
+      | document.getElementsByName(이름)                                     | name 속성으로 객체 선택. 여러개 리턴     |
+      | document.getElementsByClassName(클래스)                              | class 속성으로 객체 선택. 여러개 리턴    |
+      | document.getElementsByTagName(이름)                                  | element 이름으로 객체 선택. 여러개 리턴  |
+      | document.querySelectorAll(선택자)                                    | 선택자로 여러 개의 객체 선택             |
+      | document.querySelector(선택자)                                       | 선택자를 사용해 객체 선택                |
+      +───────────────────────────────────+─────────────────────+
+      | document.querySelector("div.user-panel.main input[name='login']");                                              |
+      +───────────────────────────────────+─────────────────────+
+
+    </pre>
+
+    <div>
+        <input id="btn" type="button" value='엘리먼트 찾기'>
+        <hr>
+
+        <input class='고전이벤트핸들러' type="button" value='엘리먼트 찾기'>
+        <a class='고전이벤트핸들러' href="http://naver.com">엘리먼트 찾기</a>
+        <hr>
+
+        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 1</button>
+        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 2</button>
+        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 3</button>
+    </div>
+</body>
+
+</html>

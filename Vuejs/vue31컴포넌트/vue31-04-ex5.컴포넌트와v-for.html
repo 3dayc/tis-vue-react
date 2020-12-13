@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Directives</title>
+
+</head>
+
+<body>
+    <xmp>
+        Vue.js v-for 지시자 에 대해서 학습한다.
+
+        단순 배열을 바인딩하는 방법 학습
+        array = [1,2,3,4,5];
+
+
+        Object Arrary를 바인딩하는 방법 학습.
+        Object Arrary 예시)
+        var objarray = [
+            { text: 'One', value: 'A' },
+            { text: 'Two', value: 'B' },
+            { text: 'Three', value: 'C' }
+        ];
+
+        문제.
+        1.전역 컴포넌트 "component-box"의 template
+        <span style="display:inline-block; font-size:3em; border:1px dashed blue; padding:10px 20px; margin:5px; text-align:center;">
+            {{num}}
+        </span>
+        2. 버튼을 클릭할 때마다 전역 컴포넌트를 추가하시오.
+
+        [참조]
+        1. page 104
+        2. "vue13-05.인스턴스data속성변경set" 예제
+
+    </xmp>
+    <hr>
+
+    <h2>컴포넌트와 반복 지시자</h2>
+    <div id="app">
+        <p>
+            <button v-on:click="clickAddBox">박스 추가</button>
+        </p>
+        <p>
+            <b v-for="(val, i) in arr" v-bind:key="i">
+                <component-box v-bind:num="val"></component-box>
+            </b>
+        </p>
+    </div>
+    <hr>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

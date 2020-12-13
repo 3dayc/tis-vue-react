@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vue25-13-ex1.표준이벤트등록</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css" />
+
+    <style>
+        ul {
+            float: left;
+            margin: 10px 30px;
+        }
+
+        #id2 {
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+        }
+
+        span {
+            width: 70px;
+            height: 50px;
+            float: left;
+            background-color: red;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        hr {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <xmp>
+            a 태그에 click 이벤트 핸들러를 작성하시오. ==> imageclick
+        </xmp>
+        <ul>
+            <li><a class="image3" href="../images/image3.jpg" v-on:click="imageclick"> 강아지 사진 </a></li>
+            <li><a class="image3" href="../images/image4.jpg" v-on:click="imageclick"> 고양이 사진 </a></li>
+        </ul>
+
+        <img id="img2" />
+        <hr>
+
+        <xmp>
+            이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
+            이미지 위에 마우스를 올리면 ==> mouseover
+            이미지 위에 마우스를 내리면 ==> mouseout
+        </xmp>
+        <img src="../images/but1.gif"
+            id="but1"
+            v-on:mouseover="imageover"
+            v-on:mouseout="imageout" />
+        <img src="../images/img_swap_off.png"
+            id="img-swap"
+            v-on:mouseover="imageover"
+            v-on:mouseout="imageout" />
+        <hr>
+
+        <xmp>
+            span에 mouseover 이벤트 핸들러를 작성하시오. ==> spanmouseover.
+            span에 mousedown 이벤트 핸들러를 작성하시오. ==> spanmousedown.
+            span에 mouseup   이벤트 핸들러를 작성하시오. ==> spanmouseup.
+            span에 mouseout  이벤트 핸들러를 작성하시오. ==> spanmouseout.
+        </xmp>
+
+        <span v-on:mouseover="spanmouseover"
+              v-on:mousedown="spanmousedown"
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover"
+              v-on:mousedown="spanmousedown"
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout"></span>
+        <span v-on:mouseover="spanmouseover"
+              v-on:mousedown="spanmousedown"
+              v-on:mouseup="spanmouseup"
+              v-on:mouseout="spanmouseout"></span>
+        <hr>
+
+        <xmp>
+            select 에 change 이벤트 핸들러를 작성하시오.
+        </xmp>
+        <select id="sel" v-on:change="selectchange">
+            <option value="../images/strawberry.gif">딸기
+            <option value="../images/banana.gif">바나나
+            <option value="../images/apple.gif" selected>사과
+        </select>
+        <hr>
+
+        <xmp>
+            input 태그에 focus, blur 효과 넣기
+            >>> input 태그에 테두리를 칠하는 경우에는 outline을 사용.
+            focus 이벤트 핸들러 ==> inputfocus. outline: 2px dotted red 설정
+            blur 이벤트 핸들러 ==> inputblur. outline: none 설정
+        </xmp>
+        <input type="text" id="ID" v-on:blur="inputblur" v-on:focus="inputfocus" />
+        <hr>
+
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    vm = new Vue({
+        el: "#app",
+        methods:{
+            imageclick : function(e) {
+                console.log( "imageclick", e.target);
+                // console.log( arguments.callee.name , e.target); // arguments.callee.name: 호출 메서드명
+                // 이벤트 취소 설정
+                e.stopPropagation();
+                e.preventDefault();
+            },
+            imageover : function(e) {
+                console.log("imageover", e.target);
+            },
+            imageout : function(e) {
+                console.log("imageout", e.target);
+            },
+            spanmouseover : function(e) {
+                console.log("spanmouseover", e.target);
+            },
+            spanmousedown : function(e) {
+                console.log("spanmousedown", e.target);
+            },
+            spanmouseup : function(e) {
+                console.log("spanmouseup", e.target);
+            },
+            spanmouseout : function(e) {
+                console.log("spanmouseout", e.target);
+            },
+            selectchange : function(e) {
+                console.log("selectchange", e.target);
+            },
+            inputblur: function(e) {
+                console.log("inputblur", e.target);
+            },
+            inputfocus: function(e) {
+                console.log("inputfocus", e.target);
+            },
+        }
+    })
+</script>
+

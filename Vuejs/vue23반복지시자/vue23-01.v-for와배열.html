@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Template - Directives</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <style lang="">
+        ul {
+            list-style-type: disc;
+        }
+
+        span {
+            font-size: 3em;
+            border: 1px dashed blue;
+            padding: 10px 20px;
+            margin: 5px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <xmp>
+        Vue.js v-for 지시자 에 대해서 학습한다.
+
+        v-for 지시자는 javascript의 for ~ in 문과 같은 것이다
+        for( var system in systems){
+            console.log( system );
+        }
+
+        단순 배열을 바인딩하는 방법 학습
+        array = [1,2,3,4,5];
+
+
+        Object Arrary를 바인딩하는 방법 학습.
+        Object Arrary 예시)
+        var objarray = [
+            { text: 'One', value: 'A' },
+            { text: 'Two', value: 'B' },
+            { text: 'Three', value: 'C' },
+        ];
+
+        <select name="" id="">
+            <option value="A"> One </option>
+            <option value="B"> Two </option>
+            <option value="C"> Three </option>
+        </select>
+
+        [참조]page 105
+    </xmp>
+    <hr>
+
+    <h2>Arrary 바인딩</h2>
+    <div id="app">
+        <p>
+            <ul>
+                <!-- 
+                    v-for는 javascript의 for ~ in 문과 같은 것이다
+                    javascript for( var system in systems); 문과 같다 
+                -->
+                <li v-for="system in systems">{{ system }}</li>
+            </ul>
+        </p>
+        <p>
+            <span v-for="(val, i) in arr" v-bind:key="i">{{val}}</span>
+        </p>
+    </div>
+    <hr>
+
+    <h2>Object Arrary 바인딩</h2>
+    <div id="app1">
+        <div>
+            <h2>Object Arrary rendered with v-for:</h2>
+            <p>
+                var objarray = [
+                    { text: 'One', value: 'A' },
+                    { text: 'Two', value: 'B' },
+                    { text: 'Three', value: 'C' },
+                ];
+            </p>
+            <select name="" id="">
+                <option v-for="(option,index) in options" 
+                        v-bind:key="index" 
+                        v-bind:value="option.value">
+                    {{ option.text }} : {{option.value}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            systems: ['android', 'ios', 'window'],
+            arr: [1,2,3,4,5],
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "",
+        data: {
+    
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' },
+            ],
+        },
+        //template: ``,
+        methods: {
+    
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

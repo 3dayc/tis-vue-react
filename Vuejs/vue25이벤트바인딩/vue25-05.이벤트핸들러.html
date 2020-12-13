@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>이벤트핸들러</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css"/>
+
+</head>
+
+<body>
+    <div>
+        <h2>인라인 이벤트 핸들러 설정</h2>
+        <pre>
+            태그 내의 속성(attribute)으로 이벤트 핸들러 선언하는 방법
+            웹 페이지의 가장 기본적인 연결 방식
+            태그 속성에 자바스크립트 코드를 넣어 이벤트를 연결
+        </pre>
+        
+        <input type     = "button"
+            value       = "인라인 클릭 이벤트 핸들러 작성"
+            onclick     = "btn_onclick()" />
+        <input type     = "button"
+            value       = "인라인 마우스 이벤트 핸들러 작성"
+            onmouseover = "btn_onmouseover(this)"
+            onmouseout  = "btn_onmouseout(window.event, 123)"
+            onmousedown = "btn_onmousedown(this)"
+            onmouseup   = "btn_onmouseup(this, '123', 'abc')" />
+        <hr/>
+
+        <h2>고전 이벤트 핸들러 설정</h2>
+        <pre>
+            JavaScript의 코드 내에서 이벤트 핸들러 선언하는 방식
+            이벤트명은 모두 소문자로 기술 - onLoad, onClick은 불가
+            이벤트 하나에 이벤트 핸들러 하나만 연결
+        </pre>
+        <input id="btn" type="button" value='고전 이벤트 핸들러 작성'>
+        <input class='고전이벤트핸들러' type="button" value='고전 이벤트 핸들러 작성'>
+        <a class='고전이벤트핸들러' href="http://naver.com">이벤트 핸들러 작성</a>
+        <hr/>
+
+        <h2>표준 이벤트 핸들러 설정</h2>
+        <pre>
+            한 번에 여러 가지 이벤트 핸들러 추가 가능
+            추가: addEventListener(eventName, handler);
+            삭제: removeEventListener(eventName, handler);
+        </pre>
+        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 작성</button>
+        <button name="표준이벤트핸들러" >표준 이벤트 핸들러 작성</button>
+    </div>
+</body>
+
+</html>
+
+
+

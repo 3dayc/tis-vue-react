@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+</head>
+
+<body>
+    <xmp>
+        vue.js 에서의 style 속성 설정 방식을 학습한다.
+        style 속성으로 설정할 값은 data 프로퍼티에 저장.
+        style 속성 설정은 v-bind:style 디렉티브를 사용하여 작성.
+
+        single style binding:
+        ------------------
+        new Vue({
+            data : {
+                baseStyles: {
+                    fontWeight:'800',
+                    color: 'red'
+                },
+            },
+        });
+        <p v-bind:style="baseStyles">
+            baseStyles and overrideStyles
+        </p>
+
+        multi style binding:
+        ------------------
+        new Vue({
+            data : {
+                baseStyles: {
+                    fontWeight:'800',
+                    color: 'red'
+                },
+                overrideStyles: {
+                    color:'blue'
+                },
+            },
+        });
+        <p v-bind:style="[baseStyles, overrideStyles]">
+            baseStyles and overrideStyles
+        </p>
+    </xmp>
+    <hr>
+
+    <div id="example1">
+        도전1. Vue.js 를 사용한 style single 바인딩 복습. v-bind:style 객체 사용<br>
+        <button id="btn1" v-bind:style="myColor">버튼1</button>
+    </div>
+
+    <div id="example2">
+        도전2. Vue.js 를 사용한 style multi 바인딩 구현. v-bind:style에 배열 사용<br>
+
+        <pre>
+            .myColor {
+                background-color: aqua;
+                color: purple;
+            }
+            .myLayout {
+                width: 150px;
+                height: 80px;
+                text-align: center;
+            }
+        </pre>
+        <button id="btn1" v-bind:style="[myColor,myLayout]">버튼1</button>
+    </div>
+    <hr>
+
+    <xmp>
+        [1] v-bind 지시자
+        css클래스를 바인딩하기 위해 v-bind:class를 사용한다.
+        v-bind:class를 이용해 클래스를 적용할 때 boolean값을 이용해 지정한다.
+
+        [2] v-model 지시자
+        v-model 디렉티브를 이용해 양방향 바인딩 되어 있음
+
+        도전3. v-bind 과 v-model 지시자를 이용하여 클래스를 동적으로 변경하는 예제를 작성한다.
+    </xmp>
+    <hr>
+
+    <style>
+        .set1 {
+            background-color: aqua;
+            color: purple;
+        }
+
+        .set2 {
+            text-align: center;
+            width: 120px;
+        }
+
+        .set3 {
+            border: sandybrown dashed 5px;
+        }
+    </style>
+    <div id="example3">
+        <h2> v-bind:class 를 사용한 예제 </h2>
+        <button id="btn1" v-bind:class="mystyle">버튼1</button>
+        <p>
+            <input type="checkbox" v-model="mystyle.set1" value="true" />set1 디자인<br />
+            <input type="checkbox" v-model="mystyle.set2" value="true" />set2 디자인<br />
+            <input type="checkbox" v-model="mystyle.set3" value="true" />set3 디자인<br />
+        </P>
+    </div>
+    <hr />
+    
+    <div id="example4">
+        <h2> v-bind:style 를 사용한 예제 </h2>
+        <button id="btn1" v-bind:style="[mystyle.set1,mystyle.set2,mystyle.set3]">버튼1</button>
+        <p>
+            <input type="checkbox" v-model="mystyle.set1" value="true" />set1 디자인<br />
+            <input type="checkbox" v-model="mystyle.set2" value="true" />set2 디자인<br />
+            <input type="checkbox" v-model="mystyle.set3" value="true" />set3 디자인<br />
+        </P>
+    </div>
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

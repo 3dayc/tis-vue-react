@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css" />
+</head>
+
+<body>
+    <xmp>
+        JSX 에서 반복문을 사용하는 방법을 배운다.
+
+        참고: https://flaviocopes.com/react-how-to-loop/
+        
+        컴포넌트명 
+        wrap1 ==> Loop1. for ~ in 사용 예제. 
+                  <Loop1 items={elements}></Loop1>
+        wrap2 ==> Loop2. for ~ of  사용 예제 
+                  <Loop2 items={elements}></Loop2>
+        wrap3 ==> Loop3. map 사용 예제.
+                  <Loop3 items={elements}></Loop2>
+        
+        작성  순서
+            단계1: React 객체 스크립트 플러그인 추가 or 객체 import
+            단계2. React 객체 import 여부 확인
+                console.log(React);
+                console.log(ReactDOM);
+            단계3. Component 만들기
+            단계4. Component 화면에 컴포넌트 주입
+    </xmp>
+    <hr>
+
+    <div id="wrap1"></div>
+    <div id="wrap2"></div>
+    <div id="wrap3"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+
+

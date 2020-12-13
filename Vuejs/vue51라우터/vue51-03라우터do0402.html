@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Nested Router</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <xmp>
+        Vue의 라우팅을 이해하자.
+
+        vue-router 는?
+            vue-router is the officially supported routing library for vue.js.
+
+        1. 서버 라우팅
+        2. 클라이언트 라우팅. SPA
+
+        <router-link to="/path">Link Text</router-link>
+            ==> Creates a link to the route that matches the path
+        <router-view></router-view>
+            ==> Outlet for the currently matched route. It's component will be rendered here.
+
+        Nested Router
+        NamedView Router
+        Dynamic Router
+
+        [참조]page 77~86
+    </xmp>
+    <hr>
+    <ul style="margin-left:45px;">
+        <li>
+            <a href="javascript:void(0);"
+                onclick="javascript:(function(){ location.href = location.href.replace(location.hash, '') + '#/user'; })()">#/user</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"
+                onclick="javascript:(function(){ location.href = location.href.replace(location.hash, '') + '#/user/posts'; })()">#/user/posts</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"
+                onclick="javascript:(function(){ location.href = location.href.replace(location.hash, '') + '#/user/profile'; })()">#/user/profile</a>
+        </li>
+    </ul>
+    <hr>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+
+</body>
+
+</html>

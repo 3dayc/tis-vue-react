@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Props Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet" href="../css/reset.css">
+
+</head>
+
+<body>
+    <xmp>
+
+        부모 컴포넌트에서 자식 컴포넌트에게 데이터를 전달하는 방법에 대해서 배운다.
+
+        작업 순서
+            1. Vue 인스턴스를 만든다.
+            2. 전역 컴포넌트 child-component 를 만든다.
+                template 속성에는 <p>{{ propsdata }}</p> 만 설정.
+            3. Vue 인스턴스에서 child-component 로 메시지를 전달 할 수 있게 설정하다.
+                <!-- 팁 : 오른쪽에서 왼쪽으로 속성을 읽으면 더 수월합니다. -->
+                <child-component v-bind:propsdata="message"></child-component>
+
+        [참조]page 65
+    </xmp>
+    <img src="../images/components_parent_child.png" alt="" srcset="">
+    <hr>
+    <div id="app">
+        <!-- 팁 : 오른쪽에서 왼쪽으로 속성을 읽으면 더 수월합니다. -->
+        <child-component v-bind:propsdata="message"></child-component>
+    </div>
+
+</body>
+
+</html>
+
+<!-- vue 플러그인 임포트   -->

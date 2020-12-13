@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/reset.css" />
+</head>
+
+<body>
+    <xmp>
+        JSX 에서 반복문을 사용하여 아래의 객체 배열을 출력하시오.
+        반복문을 처리할 때 반드시  key 프러터티 설정을 해야한다.
+        왜냐하면 Virtual DOM 이 변경된 노드를 찾기 쉽게 하기 위해서. 
+        렌더링 속도를 빠르게 하기 위해서는 key 프러터티 설정이 필요
+        key 프로러피티는 Unique 해야 한다. 
+        const tolist = [
+            { taskName: "빨래하기", finished: false },
+            { taskName: "공부하기", finished: true },
+            { taskName: "게임하기", finished: true },        
+        ];
+    </xmp>
+    <hr>
+
+    <div id="app"></div>
+</body>
+
+</html>
+
+<!-- react 플러그인 include   -->
+<!-- 주의: 사이트를 배포할 때는 'development.js'를 'production.min.js'로 대체하세요. -->
+
