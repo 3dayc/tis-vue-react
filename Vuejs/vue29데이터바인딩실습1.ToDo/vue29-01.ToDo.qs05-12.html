@@ -350,6 +350,10 @@
             },
             removeTodo: function(id, index) {
                 this.$data.todoItems.splice(index, 1);
+
+                //click 이벤트 버블링 취소
+                event.preventDefault();
+                event.stopPropagation();
             },
             clearAll: function(event) {
                 this.$set(this.$data, "todoItems", [])
