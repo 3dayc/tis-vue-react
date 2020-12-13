@@ -67,18 +67,18 @@
         </xmp>
         <ul>
             <li>
-                <a class="image3" href="../images/image3.jpg">
+                <a class="image3" href="../images/image3.jpg" v-on:click="imageclick">
                     강아지 사진
                 </a>
             </li>
             <li>
-                <a class="image3" href="../images/image4.jpg">
+                <a class="image3" href="../images/image4.jpg" v-on:click="imageclick">
                     고양이 사진
                 </a>
             </li>
         </ul>
 
-        <img id="img2" v-bind:src="img_image3" />
+        <img id="img2" v-bind:src="img_image3"/>
         <hr />
 
         <xmp>
@@ -90,7 +90,7 @@
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
-        <img v-bind:src="img_but1" id="but1" />
+        <img v-bind:src="img_but1" id="but1" v-on:mouseover="imageover" v-on:mouseout="imageout"/>
         <img v-bind:src="img_swap" id="img-swap" />
         <hr />
 
@@ -138,5 +138,82 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            img_image3: null,
+            img_but1: "../images/but1.gif",
+            img_swap: "../images/img_swap_off.png",
+            img_select: null,
+        },
+        //template: ``,
+        methods: {
+            imageclick: function(event) {
+                console.log(event.target);
+
+                //<a href="">에서 href을 얻는 방법
+                var href = event.target.href;
+
+                // this.$data.img_image3 = href;
+                this.$set(this.$data, "img_image3", href)
+
+                // 문제점. a 태그의 redirect 발생.
+                // 어떻게 redirect 막을 수 있는가? ==> 이벤트 취소 이용
+                event.stopPropagation();
+                event.preventDefault();
+            },
+            
+            imageover: function(event) {
+                console.log(event.target);
+
+                //<img v-bind:src="img_but1" id="but1"에서 어떻게 id 값을 얻을 수 있을까?
+                //event.target.id ==> but1
+                var id = event.target.id;
+                if(id==="but1") {
+                    this.$set(this.$data, "img_but1", "../images/but2.gif")
+                }
+                else {
+                    this.$set(this.$data, "img_swap", "../images/img_swap_on.png")
+                }
+            },
+            imageout: function(event) {
+                console.log(event.target);
+
+                var id = event.target.id;
+                if(id==="but1") {
+                    this.$set(this.$data, "img_but1", "../images/but1.gif")
+                }
+                else {
+                    this.$set(this.$data, "img_swap", "../images/img_swap_off.png")
+                }
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
 
