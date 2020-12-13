@@ -76,7 +76,7 @@
     </xmp>
     <hr />
 
-    <div id="app">
+    <!-- <div id="app">
         <header>
             Header
         </header>
@@ -92,6 +92,20 @@
         <footer>
             Footer
         </footer>
+    </div> -->
+
+    <div id="app">
+        <component-header></component-header>
+        <div id="content">
+            <p>Content</p>
+            <aside>
+                Aside
+            </aside>
+            <div id="content-list">
+                List
+            </div>
+        </div>
+        <component-footer></component-footer>
     </div>
 
     
@@ -99,5 +113,57 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    //지역 컴포넌트 만들기
+    //태그명                 ===> 컴포넌트명
+    //component-header ===> componentHeader
+    //component-content ===> componentContent
+    //component-footer ===> componentFooter
+    var componentHeader = { 
+        /* pdtmc^2w */
+        template: `
+        <header>
+            Header
+        </header>
+        `,
+    };
+
+    var componentContent = { 
+        /* pdtmc^2w */
+        template: `
+        
+        `,
+    };
+
+    var componentFooter = { 
+        /* pdtmc^2w */
+        template: `
+        <footer>
+            Footer
+        </footer>
+        `,
+    };
+    
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        components: {
+             /* 지역 컴포넌트는 vue 인스턴스에 등록해야 한다.
+                작성규칙: 태그명 : 지역컴포넌트변수명 ,
+                예시) "???" : ???,
+            */
+           "component-header": componentHeader,
+           "component-footer": componentFooter,
+        },
+    });
+    
+</script>
+

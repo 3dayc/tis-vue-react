@@ -267,7 +267,7 @@
                     {{ todoItem.todo }}
                     <span class="removeBtn"
                           type="button"
-                          v-on:click="removeTodo(todoItem.id, index)">
+                          v-on:click.stop="removeTodo(todoItem.id, index)">
                         <i class="far fa-trash-alt" aria-hidden="true"></i>
                     </span>
                 </li>
@@ -352,8 +352,9 @@
                 this.$data.todoItems.splice(index, 1);
 
                 //click 이벤트 버블링 취소
-                event.preventDefault();
-                event.stopPropagation();
+                // event.preventDefault();
+                // event.stopPropagation();
+                // 또는 v-on:click.stop
             },
             clearAll: function(event) {
                 this.$set(this.$data, "todoItems", [])
