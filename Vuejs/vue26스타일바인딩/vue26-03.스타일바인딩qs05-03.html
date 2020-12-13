@@ -211,7 +211,7 @@
         },
         //template: ``,
         methods: {
-            overEvent(this): function(event) {
+            overEvent: function(event) {
                 console.log(event.target);
                 var obj = {
                     color: "yellow",
@@ -219,7 +219,7 @@
                 }
                 this.$set(this.$data, "style1", obj);
             },
-            outEvent(this): function(event) {
+            outEvent: function(event) {
                 console.log(event.target);
                 var obj = {
                     color: "black",
