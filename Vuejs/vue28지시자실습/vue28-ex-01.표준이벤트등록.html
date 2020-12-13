@@ -78,20 +78,24 @@
             </li>
         </ul>
 
-        <img id="img2" v-bind:src="img_image3"/>
+        <img id="img2" v-bind:src="img_image3" />
         <hr />
 
         <xmp>
             이미지 위에 마우스를 올리거나 내리면 src 에 있는 값을 "img" 태그에 나오게 하시오
             이미지에 mouseover 와 mouseout 이벤트를 핸들러를 작성하시오.
             mouseover 이벤트를 핸들러 ==> imageover
-            mouseout 이벤트를 핸들러 ==> imageout
+            mouseout 이벤트를 핸들러  ==> imageout
             
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
-        <img v-bind:src="img_but1" id="but1" v-on:mouseover="imageover" v-on:mouseout="imageout"/>
-        <img v-bind:src="img_swap" id="img-swap" />
+        <img v-bind:src="img_but1" id="but1" 
+            v-on:mouseover="imageover" 
+            v-on:mouseout="imageout" />
+        <img v-bind:src="img_swap" id="img-swap"
+            v-on:mouseover="imageover" 
+            v-on:mouseout="imageout" />
         <hr />
 
         <xmp>
@@ -138,7 +142,6 @@
 
 </html>
 
-
 <!-- vue 플러그인 임포트   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
@@ -151,49 +154,54 @@
         /* edtmc^2w */
         el: "#app",
         data: {
-            img_image3: null,
+            img_image3: null, 
             img_but1: "../images/but1.gif",
             img_swap: "../images/img_swap_off.png",
             img_select: null,
         },
         //template: ``,
         methods: {
-            imageclick: function(event) {
+            imageclick: function(event){
                 console.log(event.target);
 
-                //<a href="">에서 href을 얻는 방법
+                // <a href="" >에서 href 을 얻는 방법.
                 var href = event.target.href;
 
-                // this.$data.img_image3 = href;
-                this.$set(this.$data, "img_image3", href)
+                //this.$data.img_image3 = href;
+                this.$set( this.$data, "img_image3", href );
 
                 // 문제점. a 태그의 redirect 발생.
-                // 어떻게 redirect 막을 수 있는가? ==> 이벤트 취소 이용
+                // 어떻게 redirect 막을수 있는가? ==> 이벤트 취소 이용.
                 event.stopPropagation();
                 event.preventDefault();
             },
-            
-            imageover: function(event) {
+            imageover: function(event){
                 console.log(event.target);
 
-                //<img v-bind:src="img_but1" id="but1"에서 어떻게 id 값을 얻을 수 있을까?
-                //event.target.id ==> but1
-                var id = event.target.id;
-                if(id==="but1") {
-                    this.$set(this.$data, "img_but1", "../images/but2.gif")
+                // <img v-bind:src="img_but1" id="but1"에서 어떻게 id 값을 얻을 수 있을까?
+                // event.target.id  ===> but1
+                var id = event.target.id ;
+                if( id === "but1") {
+                    //this.$data.img_but1 = "../images/but2.gif"; 
+                    this.$set( this.$data, "img_but1", "../images/but2.gif")
                 }
                 else {
+                    //this.$data.img_swap = "../images/img_swap_on.png"; 
                     this.$set(this.$data, "img_swap", "../images/img_swap_on.png")
                 }
             },
-            imageout: function(event) {
+            imageout: function (event) {
                 console.log(event.target);
 
+                // <img v-bind:src="img_but1" id="but1"에서 어떻게 id 값을 얻을 수 있을까?
+                // event.target.id  ===> but1
                 var id = event.target.id;
-                if(id==="but1") {
+                if (id === "but1") {
+                    //this.$data.img_but1 = "../images/but1.gif"; 
                     this.$set(this.$data, "img_but1", "../images/but1.gif")
                 }
                 else {
+                    //this.$data.img_swap = "../images/img_swap_off.png"; 
                     this.$set(this.$data, "img_swap", "../images/img_swap_off.png")
                 }
             }
@@ -216,4 +224,3 @@
     });
     
 </script>
-
