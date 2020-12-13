@@ -104,11 +104,20 @@
             span에 mouseup 이벤트 핸들러를 작성하시오. ==> spanmouseup. background-color를 pink로 설정
             span에 mouseout 이벤트 핸들러를 작성하시오. ==> spanmouseout. background-color를 red로 설정
         </xmp>
-        <span>
+        <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
         </span>
-        <span>
+        <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
         </span>
-        <span>
+        <span v-on:mouseover="spanmouseover"
+        v-on:mousedown="spanmousedown"
+        v-on:mouseup="spanmouseup"
+        v-on:mouseout="spanmouseout">
         </span>
         <hr />
 
@@ -116,7 +125,7 @@
             select 에 change 이벤트 핸들러를 작성하시오.
             change 이벤트 핸들러: selectchange
         </xmp>
-        <select id="sel">
+        <select id="sel" v-on:change="selectchange">
             <option value="../images/strawberry.gif">딸기</option>
             <option value="../images/banana.gif">바나나</option>
             <option value="../images/apple.gif" selected>사과</option>
@@ -175,6 +184,7 @@
                 event.stopPropagation();
                 event.preventDefault();
             },
+
             imageover: function(event){
                 console.log(event.target);
 
@@ -204,7 +214,32 @@
                     //this.$data.img_swap = "../images/img_swap_off.png"; 
                     this.$set(this.$data, "img_swap", "../images/img_swap_off.png")
                 }
+            },
+
+            spanmouseover: function (event) {
+                console.log(event.target);
+                // event.target.style = "background-color:yellow;"
+                event.target.style.backgroundColor = "yellow";
+            },
+            spanmousedown: function (event) {
+                console.log(event.target);
+                event.target.style.backgroundColor = "blue";
+            },
+            spanmouseup: function (event) {
+                console.log(event.target);
+                event.target.style.backgroundColor = "pink";
+            },
+            spanmouseout: function (event) {
+                console.log(event.target);
+                event.target.style.backgroundColor = "red";
+            },
+
+            selectchange: function(event) {
+                console.log(event.target);
+                var value = event.target.value; //selected 값
+                this.$set(this.$data, "img_select", value);
             }
+
         },
         components: {
     

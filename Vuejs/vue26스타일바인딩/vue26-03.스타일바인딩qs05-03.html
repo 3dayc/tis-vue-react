@@ -27,33 +27,33 @@
 <body>
     <xmp>
         javascript에서 style 프로퍼티 설정 방식과 설정시의 주의 사항을 학습한다.
-          1. 명칭은 카멜 표기법 사용. 왜냐하면 자바스립트이기 때문.
-            예시) 케밥 표기법 ==> 카멜 표기법
-            font-size ==> fontSize
-            backgroundColor ==> backgroundColor
+        1. 명칭은 카멜 표기법 사용. 왜냐하면 자바스립트이기 때문.
+        예시) 케밥 표기법 ==> 카멜 표기법
+        font-size ==> fontSize
+        background-color ==> backgroundColor
 
-          2. 구분자는 세미콜론 대신 콤마 사용. 왜냐하면 자바스크립트 객체기이기 때문.
-            {
-                background-color: yellow;
-                font-size :  12pt;
-            }
-            ==>
-            {
-                backgroundColor: "yellow",
-                fontSize :  "12pt",
-            }
+        2. 구분자는 세미콜론 대신 콤마 사용. 왜냐하면 자바스크립트 객체기이기 때문.
+        {
+        background-color: yellow;
+        font-size : 12pt;
+        }
+        ==>
+        {
+        backgroundColor: "yellow",
+        fontSize : "12pt",
+        }
 
         도전1. Vue.js 를 사용하여 "==>"를 클릭하면 TO-BE 박스에 아래의
-               style 속성을 적용하여 AS-IS 처럼 만드시오.
-          height: 50px;
-          width: 150px;
-          border: 1px solid black;
-          text-align: center;
-          line-height: 50px;
-          font-weight: 800;
-          color: red;
-          background-color: darkgoldenrod;
-          padding: 50px;
+        style 속성을 적용하여 AS-IS 처럼 만드시오.
+        height: 50px;
+        width: 150px;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 50px;
+        font-weight: 800;
+        color: red;
+        background-color: darkgoldenrod;
+        padding: 50px;
     </xmp>
     <style>
         #example3>* {
@@ -112,20 +112,16 @@
         <div id="eljvs">
             자바스크립로 style 적용<br>
             <div id="a"
-                 style=" width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;"
-                 onmouseover="overEvent(this)"
-                 onmouseout="outEvent(this)">
+                style=" width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;"
+                onmouseover="overEvent(this)" onmouseout="outEvent(this)">
                 테스트
             </div>
         </div>
 
         <div id="elvue">
             Vue.js 로 style 적용<br>
-            <div id="c"
-                 style="font-size: 12px;"
-                 v-bind:style="style1"
-                 v-on:mouseover="overEvent(this)"
-                 v-on:mouseout="outEvent(this)">
+            <div id="c" style="width: 100px; height: 50px; border: 1px solid black; text-align: center; line-height: 50px;" v-bind:style="style1" v-on:mouseover="overEvent(this)"
+                v-on:mouseout="outEvent(this)">
                 테스트
             </div>
         </div>
@@ -135,4 +131,117 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* JSX를 자바스크립트로 변환 */
+</script>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">
+    /* vue 플러그인 임포트 */
+</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js">
+    /* vuex 플러그인 임포트 */
+</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js">
+    /* vue 라우터 플러그인 임포트 */
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js">
+    /* axios 플러그인 임포트 */
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    /* jQuery library */
+</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            style1: null,
+        },
+        //template: ``,
+        methods: {
+            clickArrow: function (event) {
+                console.log(event.target);
+                // height: 50px;
+                // width: 150px;
+                // border: 1px solid black;
+                // text-align: center;
+                // line-height: 50px;
+                // font-weight: 800;
+                // color: red;
+                // background-color: darkgoldenrod;
+                // padding: 50px;
+
+                var obj = {
+                    height: "50px",
+                    width: "150px",
+                    border: "1px solid black",
+                    textAlign: "center",
+                    lineHeight: "50px",
+                    fontWeight: "800",
+                    color: "red",
+                    backgroundColor: "darkgoldenrod",
+                    padding: "50px",
+                }
+                this.$set(this.$data, "style1", obj);
+            },
+        },
+        components: {
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#elvue",
+        data: {
+            style1: null,
+        },
+        //template: ``,
+        methods: {
+            overEvent(this): function(event) {
+                console.log(event.target);
+                var obj = {
+                    color: "yellow",
+                    backgroundColor: "purple",
+                }
+                this.$set(this.$data, "style1", obj);
+            },
+            outEvent(this): function(event) {
+                console.log(event.target);
+                var obj = {
+                    color: "black",
+                    backgroundColor: "aqua",
+                }
+                this.$set(this.$data, "style1", obj);
+            }
+        },
+        components: {
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+</script>
